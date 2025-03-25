@@ -1,0 +1,8 @@
+body {
+    background-color: #003366;
+}
+
+/* change the background here to the one for the game */
+#board {
+    background-color: black;
+}
