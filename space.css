@@ -6,3 +6,8 @@ body {
 #board {
     background-color: black;
 }
+
+.SpaceShip {
+    height: 80px;
+    width: auto; 
+}
