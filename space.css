@@ -2,12 +2,10 @@ body {
     background-color: #003366;
 }
 
-/* change the background here to the one for the game */
-#board {
-    background-color: black;
-}
 
-.game {
-    height: 150px;
+
+img {
+    height: 400px;
     width: auto;
+    margin-left: 400px;
 }
