@@ -6,3 +6,8 @@ body {
 #board {
     background-color: black;
 }
+
+.game {
+    height: 150px;
+    width: auto;
+}
