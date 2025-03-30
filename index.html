@@ -9,6 +9,9 @@
         <title>HYPERNOVA STRIKE</title>
         <link rel="icon" href="assests/images/SpaceShip.png" type="image/x-icon">
         <link rel="stylesheet" href="space.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     </head>
 
 
@@ -16,15 +19,18 @@
     <body>
         <script src="mechanics.js"></script>
 
-        <div id="startGame"></div>
-        <img src="lol.png">
-
-
-
-
-
-
-
+        <div id="startGame">
+       
+            <div id="BackgroundStart">
+            <img src="assests/images/BackgroundStartImage.jpg" class="BackgroundStartImage" alt="BackgroundStartImage">
+            </div>
+            <h1 id="GameText">HYPERNOVA STRIKE</h1>
+            <img src="assests/images/SpaceShipShooting.png" id="StartBackgroundImage">
+            <img src="assests/images/BossAlien.png" id="StartBackgroundImage2">
+        
+            <button id="PLAY" onclick="startGame()">PLAY</button>
+            <button id="HOW-TO-PLAY" onclick="playInstructions()">HOW-TO-PLAY</button>
+        </div>
     </body>
 
 </html>

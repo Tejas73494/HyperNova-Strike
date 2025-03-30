@@ -1,11 +1,108 @@
 body {
     background-color: #003366;
+     margin: 0;
+    overflow: hidden; 
+}
+
+#BackgroundStart {
+    display: grid;
+    place-items: center;
+    position: relative;
+    height: 100vh; 
+}
+
+.BackgroundStartImage {
+    width: 800px;
+    height: 785px;
+}
+
+#GameText {
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 55px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+
+#StartBackgroundImage, #StartBackgroundImage2 {
+    position: absolute;
+    height: 250px;
+    width: auto;
+    left: 42%;
+    animation: bobbing 2s infinite ease-in-out;
+
+}
+
+#StartBackgroundImage {
+    top: 30%;
+}
+
+#StartBackgroundImage2 {
+    top: 10%;
+    animation-delay: 0.2s; 
+}
+
+/* Background image bobbing animation */
+@keyframes bobbing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 
 
-img {
-    height: 400px;
-    width: auto;
-    margin-left: 400px;
+#PLAY, #HOW-TO-PLAY {
+    position: absolute;
+    height: 70px;
+    width: 350px;
+    left: 39%;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    color: green;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    border-color: #301934;
+
+}
+
+#PLAY {
+    top: 70%;
+}
+
+#HOW-TO-PLAY {
+    top: 80%;
+}
+
+/* Button animations effects */
+#PLAY:hover {
+    box-shadow: 0 0 10px blue;
+}
+
+#PLAY:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px 4px rgb(255, 255, 255, 0.5);
+}
+
+
+#HOW-TO-PLAY:hover {
+    box-shadow: 0 0 10px 5px #4B0082;
+}
+
+
+#HOW-TO-PLAY:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px 10px rgb(128, 0, 32, 0.5); 
 }
