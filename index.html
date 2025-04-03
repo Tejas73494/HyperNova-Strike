@@ -14,8 +14,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     </head>
 
-
-
     <body>
         <script src="mechanics.js"></script>
 
@@ -25,11 +23,19 @@
             <img src="assests/images/BackgroundStartImage.jpg" class="BackgroundStartImage" alt="BackgroundStartImage">
             </div>
             <h1 id="GameText">HYPERNOVA STRIKE</h1>
-            <img src="assests/images/SpaceShipShooting.png" id="StartBackgroundImage">
-            <img src="assests/images/BossAlien.png" id="StartBackgroundImage2">
-        
-            <button id="PLAY" onclick="startGame()">PLAY</button>
-            <button id="HOW-TO-PLAY" onclick="playInstructions()">HOW-TO-PLAY</button>
+            <div id="Instructions">
+                <img src="assests/images/SpaceShipShooting.png" id="StartBackgroundImage">
+                <img src="assests/images/BossAlien.png" id="StartBackgroundImage2">
+                <button id="PLAY" onclick="startGame()">PLAY</button>
+                <button id="HOW-TO-PLAY" onclick="playInstructions()">HOW-TO-PLAY</button>
+            </div>
+            <button id="ControlsSuperWeapon" onclick="ControlsSuperWeapon()">Controls/SuperWeapon</button>
+            <button id="HealthEnemyProperties" onclick="HealthEnemyProperties()">Health/Enemy Properties</button>
+            <button id="BossProperties" onclick="BossProperties()">Boss Properties</button>
+            <button id="GameScaling" onclick="GameScaling()">Game Scaling</button>
+            <button id="Back" onclick="goBackToInstructions()">Back</button>
+            <button id="goBackToHowtoplay" onclick="goBackToHowtoplay()">Back</button>
+
         </div>
     </body>
 

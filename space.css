@@ -1,5 +1,5 @@
 body {
-    background-color: #003366;
+    background-color: black;
      margin: 0;
     overflow: hidden; 
 }
@@ -78,6 +78,27 @@ body {
 
 }
 
+#ControlsSuperWeapon, #HealthEnemyProperties, #BossProperties, #GameScaling, #Back, #goBackToHowtoplay {
+    display: none;
+    position: absolute;
+    height: 75px;
+    width: 365px;
+    left: 39%;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    color: green;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    border-color: #301934;
+
+}
+
+
+
 #PLAY {
     top: 70%;
 }
@@ -86,23 +107,40 @@ body {
     top: 80%;
 }
 
+#ControlsSuperWeapon {
+    top: 20%;
+}
+
+#HealthEnemyProperties {
+    top: 35%;
+}
+
+#BossProperties {
+    top: 50%;
+}
+
+
+#GameScaling {
+    top: 65%;
+}
+
+
+#Back {
+    top: 80%;
+}
+
+#goBackToHowtoplay {
+    top: 88%;
+}
+
+
 /* Button animations effects */
-#PLAY:hover {
+#PLAY:hover, #HOW-TO-PLAY:hover, #ControlsSuperWeapon:hover, #HealthEnemyProperties:hover, #BossProperties:hover, #GameScaling:hover, #Back:hover, #goBackToHowtoplay:hover {
     box-shadow: 0 0 10px blue;
 }
 
-#PLAY:active {
+#PLAY:active, #HOW-TO-PLAY:active, #ControlsSuperWeapon:active, #HealthEnemyProperties:active, #BossProperties:active, #GameScaling:active, #Back:active, #goBackToHowtoplay:active {
     transform: scale(0.95);
-    box-shadow: 0 0 10px 4px rgb(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px 5px rgb(255, 255, 255, 0.5);
 }
 
-
-#HOW-TO-PLAY:hover {
-    box-shadow: 0 0 10px 5px #4B0082;
-}
-
-
-#HOW-TO-PLAY:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 10px 10px rgb(128, 0, 32, 0.5); 
-}
