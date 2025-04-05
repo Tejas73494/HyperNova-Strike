@@ -11,6 +11,47 @@ body {
     height: 100vh; 
 }
 
+#game-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(256, 256, 256, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+#play-button {
+    background: white;
+    color: black;
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+#play-button:hover {
+    background: lightgray;
+}
+
+#game-container {
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+#InitialStart {
+    display: none;
+}
+
+
+
 .BackgroundStartImage {
     width: 800px;
     height: 785px;
@@ -78,7 +119,7 @@ body {
 
 }
 
-#ControlsSuperWeapon, #HealthEnemyProperties, #BossProperties, #GameScaling, #Back, #goBackToHowtoplay {
+#ControlsSuperWeapon, #HealthEnemyProperties, #HealthBossProperties, #GameUI, #Back, #goBackToHowtoplay {
     display: none;
     position: absolute;
     height: 75px;
@@ -115,12 +156,12 @@ body {
     top: 35%;
 }
 
-#BossProperties {
+#HealthBossProperties {
     top: 50%;
 }
 
 
-#GameScaling {
+#GameUI {
     top: 65%;
 }
 
@@ -135,12 +176,92 @@ body {
 
 
 /* Button animations effects */
-#PLAY:hover, #HOW-TO-PLAY:hover, #ControlsSuperWeapon:hover, #HealthEnemyProperties:hover, #BossProperties:hover, #GameScaling:hover, #Back:hover, #goBackToHowtoplay:hover {
+#PLAY:hover, #HOW-TO-PLAY:hover, #ControlsSuperWeapon:hover, #HealthEnemyProperties:hover, #HealthBossProperties:hover, #GameUI:hover, #Back:hover, #goBackToHowtoplay:hover {
     box-shadow: 0 0 10px blue;
 }
 
-#PLAY:active, #HOW-TO-PLAY:active, #ControlsSuperWeapon:active, #HealthEnemyProperties:active, #BossProperties:active, #GameScaling:active, #Back:active, #goBackToHowtoplay:active {
+#PLAY:active, #HOW-TO-PLAY:active, #ControlsSuperWeapon:active, #HealthEnemyProperties:active, #HealthBossProperties:active, #GameUI:active, #Back:active, #goBackToHowtoplay:active {
     transform: scale(0.95);
     box-shadow: 0 0 10px 5px rgb(255, 255, 255, 0.5);
 }
 
+
+/* images and description for the how-to-play page */
+#SuperWeaponInstructions, #ZetaScoutProperties, #BetaStrikerProperties, #OmegaTitanProperties, #HealthLivesProperties {
+    display: none;
+    position: absolute;
+    color: white;
+    letter-spacing: 1.0px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+#SuperWeaponInstructions {
+    top: 47%;
+    left: 24.3%;
+    max-width: 782px;
+    font-size: 22px;
+}
+
+#ZetaScoutProperties {
+    top: 18%;
+    left: 37%;
+    font-size: 17px;
+    max-width: 580px;
+}
+
+#BetaStrikerProperties {
+    top: 38%;
+    left: 37%;
+    font-size: 17px;
+    max-width: 585px;
+}
+
+#OmegaTitanProperties {
+    top: 56%;
+    left: 37%;
+    font-size: 17px;
+    max-width: 585px;
+}
+
+#HealthLivesProperties {
+    top: 40%;
+    left: 37%;
+    font-size: 17px;
+    max-width: 585px;
+}
+
+
+#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives {
+    position: absolute;
+    display: none;
+    height: 250px;
+    width: auto;
+}
+
+#ShipControl {
+    top: 15%;
+    left: 35%;
+}
+
+#ZetaScout {
+    top: 13%;
+    left: 22%;
+}
+
+#BetaStriker {
+    top: 33%;
+    left: 22%;
+}
+
+#OmegaTitan {
+    top: 56%;
+    left: 22%;
+}
+
+#HealthLives {
+    top: 10%;
+    left: 22%;
+}

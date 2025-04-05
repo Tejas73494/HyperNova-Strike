@@ -7,7 +7,7 @@
         <meta name="description" content="This page contains my video game HYPERNOVA STRIKE. A fun
         action packed game.">
         <title>HYPERNOVA STRIKE</title>
-        <link rel="icon" href="assests/images/SpaceShip.png" type="image/x-icon">
+        <link rel="icon" href="assets/images/SpaceShip.png" type="image/x-icon">
         <link rel="stylesheet" href="space.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,26 +16,56 @@
 
     <body>
         <script src="mechanics.js"></script>
-
+      
+        <div id="game-overlay">
+            <button id="play-button" onclick="InitialGameStart()">Play</button>
+        </div>
+        <audio id="BackgroundMusic" loop> <source src="assets/sounds/BackgroundMusic.mp3" type="audio/mpeg"> </audio>
+        <div id="InitialStart">
         <div id="startGame">
-       
             <div id="BackgroundStart">
-            <img src="assests/images/BackgroundStartImage.jpg" class="BackgroundStartImage" alt="BackgroundStartImage">
+            <img src="assets/images/BackgroundStartImage.jpg" class="BackgroundStartImage" alt="BackgroundStartImage">
             </div>
             <h1 id="GameText">HYPERNOVA STRIKE</h1>
             <div id="Instructions">
-                <img src="assests/images/SpaceShipShooting.png" id="StartBackgroundImage">
-                <img src="assests/images/BossAlien.png" id="StartBackgroundImage2">
+                <img src="assets/images/SpaceShipShooting.png" id="StartBackgroundImage">
+                <img src="assets/images/BossAlien.png" id="StartBackgroundImage2">
                 <button id="PLAY" onclick="startGame()">PLAY</button>
                 <button id="HOW-TO-PLAY" onclick="playInstructions()">HOW-TO-PLAY</button>
             </div>
             <button id="ControlsSuperWeapon" onclick="ControlsSuperWeapon()">Controls/SuperWeapon</button>
-            <button id="HealthEnemyProperties" onclick="HealthEnemyProperties()">Health/Enemy Properties</button>
-            <button id="BossProperties" onclick="BossProperties()">Boss Properties</button>
-            <button id="GameScaling" onclick="GameScaling()">Game Scaling</button>
+            <button id="HealthEnemyProperties" onclick="EnemyProperties()">Enemy Properties</button>
+            <button id="HealthBossProperties" onclick="HealthBossProperties()">Health/Boss Properties</button>
+            <button id="GameUI" onclick="GameUI()">GameUI</button>
             <button id="Back" onclick="goBackToInstructions()">Back</button>
             <button id="goBackToHowtoplay" onclick="goBackToHowtoplay()">Back</button>
+            <p id="SuperWeaponInstructions">The Ion Cannon is your ship’s Super weapon, capable of instantly destroying normal enemies and 
+            dealing heavy damage to bosses. It takes 10 seconds to fully charge, shown by a slowly filling bar, but getting hit by enemies 
+            or the boss will slightly decrease the charge. Once ready, press F to activate it—this starts a 3-second warm-up before it fires.
+            While the Ion Cannon is charging or firing, your main blaster cannons are disabled, and you can’t activate the cannon again until 
+            it finishes. Use it strategically—it’s powerful, but timing and protection are everything.</p>
+            <img src="assets/images/ShipControl.png" id="ShipControl" alt="ShipControl">
+            <img src="assets/images/ZetaScout.png" id="ZetaScout" alt="ZetaScout">
+            <p id="ZetaScoutProperties">The green alien is the most comman enemy. It’s the basic enemy, appearing frequently throughout the 
+                game. The green alien moves at a moderate speed and occasionally, but not very often It only takes a single 
+                shot to destroy, making it a manageable threat that keeps the action consistent without overwhelming you.</p>
+            <img src="assets/images/BetaStriker.png" id="BetaStriker" alt="BetaStriker">
+            <p id="BetaStrikerProperties">The next enemy is the yellow alien, which is less common than the green one but more dangerous. 
+                it only takes one shot to eliminate, but is much faster and shoots far more frequently then the green alien. its speed 
+                and rapid firing make it a serious challenge to dodge and survive. This will tests the your agility and awareness.</p>
+            <img src="assets/images/OmegaTitan.png" id="OmegaTitan" alt="OmegaTitan">
+            <p id="OmegaTitanProperties">The rarest and most threatening enemy is the red alien. It doesn’t shoot at all—instead, it 
+                slowly moves across the screen, directly toward the player. If it gets close enough—within side-by-side range—it automatically 
+                damages the player by two hearts, even if it hasn’t visibly touched them. This alien is much bigger, meaning it takes two 
+                shots to destroy. Its a little less spawning then the other two but will spawn especially in higher rounds a lot.</p>
 
+            <img src="assets/images/HeartLives.png" id="HealthLives" alt="HeartLives">
+            <p>You will begins the game with three hearts. Any time the you get hit you will lose one heart. You will regain one heart every 
+                five rounds you surivie. You can only gain up to three hearts.</p>
+
+
+
+            </div>
         </div>
     </body>
 
