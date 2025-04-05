@@ -53,7 +53,7 @@ body {
 
 
 .BackgroundStartImage {
-    width: 800px;
+    width: 750px;
     height: 785px;
 }
 
@@ -187,7 +187,7 @@ body {
 
 
 /* images and description for the how-to-play page */
-#SuperWeaponInstructions, #ZetaScoutProperties, #BetaStrikerProperties, #OmegaTitanProperties, #HealthLivesProperties {
+#SuperWeaponInstructions, #ZetaScoutProperties, #BetaStrikerProperties, #OmegaTitanProperties, #HealthLivesProperties, #BossProperties {
     display: none;
     position: absolute;
     color: white;
@@ -200,41 +200,49 @@ body {
 
 #SuperWeaponInstructions {
     top: 47%;
-    left: 24.3%;
-    max-width: 782px;
-    font-size: 22px;
+    left: 26.3%;
+    max-width: 745px;
+    font-size: 20px;
 }
 
 #ZetaScoutProperties {
     top: 18%;
     left: 37%;
     font-size: 17px;
-    max-width: 580px;
+    max-width: 570px;
 }
 
 #BetaStrikerProperties {
     top: 38%;
     left: 37%;
     font-size: 17px;
-    max-width: 585px;
+    max-width: 575px;
 }
 
 #OmegaTitanProperties {
     top: 56%;
     left: 37%;
     font-size: 17px;
-    max-width: 585px;
+    max-width: 570px;
 }
 
 #HealthLivesProperties {
-    top: 40%;
-    left: 37%;
+    top: 18%;
+    left: 35%;
     font-size: 17px;
     max-width: 585px;
 }
 
+#BossProperties {
+    top: 40%;
+    left: 38%;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+    max-width: 545px;
+}
 
-#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives {
+
+#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives, #BossAlienShooting, #BossAlienBeam {
     position: absolute;
     display: none;
     height: 250px;
@@ -248,20 +256,31 @@ body {
 
 #ZetaScout {
     top: 13%;
-    left: 22%;
+    left: 22.5%;
 }
 
 #BetaStriker {
     top: 33%;
-    left: 22%;
+    left: 22.5%;
 }
 
 #OmegaTitan {
     top: 56%;
-    left: 22%;
+    left: 22.5%;
 }
 
 #HealthLives {
     top: 10%;
     left: 22%;
 }
+
+#BossAlienShooting {
+    top: 33%;
+    left: 23%;
+}
+
+#BossAlienBeam {
+    top: 55%;
+    left: 23.2%;
+}
+

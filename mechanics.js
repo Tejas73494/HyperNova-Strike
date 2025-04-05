@@ -28,8 +28,6 @@ function sound(src) {
   
 
 
-
-
 // These next 7 functions contorl the how-to-play page
 
 function playInstructions() {
@@ -77,6 +75,10 @@ function HealthBossProperties() {
     document.getElementById("goBackToHowtoplay").style.display = "block";
     document.getElementById("HealthLives").style.display = "block";
     document.getElementById("HealthLivesProperties").style.display = "block";
+    document.getElementById("BossAlienShooting").style.display = "block";
+    document.getElementById("BossAlienBeam").style.display = "block";
+    document.getElementById("BossProperties").style.display = "block";
+
 
 
 }
@@ -114,6 +116,13 @@ function goBackToHowtoplay() {
     document.getElementById("BetaStrikerProperties").style.display = "none";
     document.getElementById("OmegaTitan").style.display = "none";
     document.getElementById("OmegaTitanProperties").style.display = "none";
+    document.getElementById("HealthLives").style.display = "none";
+    document.getElementById("HealthLivesProperties").style.display = "none";
+    document.getElementById("BossAlienShooting").style.display = "none";
+    document.getElementById("BossAlienBeam").style.display = "none";
+    document.getElementById("BossProperties").style.display = "none";
+
+
 
 }
 
