@@ -284,3 +284,6 @@ body {
     left: 23.2%;
 }
 
+#gameCanvas {
+    border: white;
+}

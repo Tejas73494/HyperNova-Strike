@@ -10,24 +10,6 @@ function InitialGameStart() {
     //document.getElementById("BackgroundMusic").play();
 }
 
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function() {
-      this.sound.play();
-    };
-    this.stop = function() {
-      this.sound.pause();
-      this.sound.currentTime = 0;
-    };
-  }
-  
-
-
 // These next 7 functions contorl the how-to-play page
 
 function playInstructions() {
@@ -79,8 +61,6 @@ function HealthBossProperties() {
     document.getElementById("BossAlienBeam").style.display = "block";
     document.getElementById("BossProperties").style.display = "block";
 
-
-
 }
 
 function GameUI() {
@@ -122,12 +102,26 @@ function goBackToHowtoplay() {
     document.getElementById("BossAlienBeam").style.display = "none";
     document.getElementById("BossProperties").style.display = "none";
 
-
-
 }
 
 
 
 function startGame() {
-    document.getElementById("BackgroundMusic").pause();
+    startArea = document.getElementById("startGame");
+    document.body.removeChild(startArea);
+    GameCanvas.start()
+}
+    
+
+
+// Creating the canvas element into HTML and setting dimensions and background
+var GameCanvas = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+    this.canvas.width = 600;
+    this.canvas.height = 700;
+    this.canvas.id = "gameCanvas";
+    this.context = this.canvas.getContext("2d");
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    }
 }
