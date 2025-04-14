@@ -285,5 +285,9 @@ body {
 }
 
 #gameCanvas {
-    border: white;
+    border: 5px solid white;
+    position: absolute;
+    right: 445px;
+    top: 5px;
+
 }

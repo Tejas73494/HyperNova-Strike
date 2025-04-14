@@ -105,11 +105,11 @@ function goBackToHowtoplay() {
 }
 
 
-
+//This function clears the how to play page and starts the game
 function startGame() {
-    startArea = document.getElementById("startGame");
+    const startArea = document.getElementById("startGame");
     document.body.removeChild(startArea);
-    GameCanvas.start()
+    GameCanvas.start() // refers to the object for creating the canvas
 }
     
 
@@ -119,7 +119,7 @@ var GameCanvas = {
     canvas : document.createElement("canvas"),
     start : function() {
     this.canvas.width = 600;
-    this.canvas.height = 700;
+    this.canvas.height = 760;
     this.canvas.id = "gameCanvas";
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
