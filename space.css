@@ -1,7 +1,8 @@
 body {
     background-color: black;
-     margin: 0;
-    overflow: hidden; 
+    margin: 0;
+    overflow-x: auto;
+    overflow: auto;
 }
 
 #BackgroundStart {
@@ -289,5 +290,4 @@ body {
     position: absolute;
     right: 445px;
     top: 5px;
-
 }
