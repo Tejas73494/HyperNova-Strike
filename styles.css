@@ -287,6 +287,6 @@ body {
 }
   
 
-#ZetaScout1, #player, #BetaStriker1, #BossAlien1, #HeartLives1 {
+#ZetaScout1, #BetaStriker1, #OmegaTitan1, #player, #BossAlien1, #HeartLives1 {
     display: none;
 }

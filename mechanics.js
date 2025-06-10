@@ -115,17 +115,23 @@ function startGame() {
     ZetaScoutImg.alt = "ZetaScout";
     document.body.appendChild(ZetaScoutImg);
 
-    const SpaceShipImg = document.createElement("img");
-    SpaceShipImg.id = "player";
-    SpaceShipImg.src = "assets/images/SpaceShip.png";
-    SpaceShipImg.alt = "SpaceShip";
-    document.body.appendChild(SpaceShipImg);
-
     const BetaStrikerImg = document.createElement("img");
     BetaStrikerImg.id = "BetaStriker1";
     BetaStrikerImg.src = "assets/images/BetaStriker.png";
     BetaStrikerImg.alt = "BetaStriker";
     document.body.appendChild(BetaStrikerImg);
+
+    const OmegaTitanImg = document.createElement("img");
+    OmegaTitanImg.id = "OmegaTitan1";
+    OmegaTitanImg.src = "assets/images/OmegaTitan.png";
+    OmegaTitanImg.alt = "OmegaTitanImg";
+    document.body.appendChild(OmegaTitanImg);
+
+    const SpaceShipImg = document.createElement("img");
+    SpaceShipImg.id = "player";
+    SpaceShipImg.src = "assets/images/SpaceShip.png";
+    SpaceShipImg.alt = "SpaceShip";
+    document.body.appendChild(SpaceShipImg);
 
     const BossAlienImg = document.createElement("img");
     BossAlienImg.id = "BossAlien1";
@@ -217,7 +223,7 @@ class Player {
         this.y = this.game.height - this.height;
         this.speed = 5;
         this.lives = 3;
-        this.maxLives = 10;
+        this.maxLives = 5;
         this.image = document.getElementById('player');
         this.SmallLaser = new bigLaser(this.game);
         this.energy = 50;
@@ -243,7 +249,6 @@ class Player {
         else if (this.x > this.game.width - this.width) this.x = this.game.width - this.width;
 
         //hoz bound
-
         if (this.x < -this.width * 0.5) this.x = -this.width * 0.5;
         else if (this.x > this.game.width - this.width * 0.5) this.x = this.game.width - this.width * 0.5;
     }
@@ -318,6 +323,15 @@ class BetaStriker extends Enemy {
         super(game, positionX, positionY);
         this.image = document.getElementById('BetaStriker1');
         this.lives = 2;
+        this.maxLives = this.lives;
+    }
+}
+
+class OmegaTitan extends Enemy {
+    constructor(game, positionX, positionY) {
+        super(game, positionX, positionY);
+        this.image = document.getElementById('OmegaTitan1');
+        this.lives = 3;
         this.maxLives = this.lives;
     }
 }
@@ -486,6 +500,7 @@ class Game {
         this.columns = 2;
         this.rows = 2;
         this.enemySize = 200;
+        this.image = document.getElementById('HeartLives1')
         // this.waves.push(new Wave(this));
         this.waveCount = 1;
 
@@ -573,17 +588,22 @@ class Game {
         context.shadowColor = 'black';
         context.fillText('Score: ' + this.score, 20, 40);
         context.fillText('Wave: ' + this.waveCount, 20, 80);
-        for (let i = 0; i < this.player.maxLives; i++) {
-            context.strokeRect(20 + 20 * i, 100, 10, 15);
-        }
+
+        //Draw lives
         for (let i = 0; i < this.player.lives; i++) {
-            context.fillRect(20 + 20 * i, 100, 10, 15);
+            context.drawImage(this.image, -15 + 50 * i, 65, 100, 100);
         }
         // energy
         context.save();
+        context.font = '18px Impact'
+        context.fillText('Ion Cannon Energy', 20, 150);
+        context.restore();
+
+        context.save()
         this.player.cooldown ? context.fillStyle = 'red' : context.fillStyle = 'blue';
+        if (this.player.energy >= this.player.maxEnergy) context.fillStyle = 'green';
         for (let i = 0; i < this.player.energy; i++) {
-            context.fillRect(20 + 2 * i, 130, 2, 15)
+            context.fillRect(20 + 2 * i, 160, 2, 15)
         }
         context.restore()
         if (this.gameOver) {
