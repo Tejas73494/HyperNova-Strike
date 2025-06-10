@@ -1,4 +1,4 @@
-let game
+let game, canvas;
 
 
 // This function is to help initialize the background music  
@@ -108,11 +108,72 @@ function startGame() {
     canvas.height = 760;
     document.body.insertBefore(canvas, document.body.childNodes[0]);
     game = new Game(canvas);
-    game.render(game.ctx);
     game.ctx.fillStyle = "white";
     game.ctx.strokeStyle = "white";
     game.ctx.font = '30px Impact';
-    animate();
+
+    let lastTime = 0;
+    function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
+        game.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        game.render(game.ctx, deltaTime);
+        requestAnimationFrame(animate);
+    }
+    animate(0);
+}
+
+
+
+
+
+class Laser {
+    constructor(game) {
+        this.game = game;
+        this.x = 0;
+        this.y = 0;
+        this.height = this.game.height - 50;
+    }
+    render(context) {
+        this.x = this.game.player.x + this.game.player.width * 0.5;
+        this.game.player.energy -= this.damage;
+
+        context.save();
+        context.fillStyle = 'blue';
+        context.fillRect(this.x, this.y, this.width, this.height);
+        context.fillStyle = 'red';
+        context.fillRect(this.x + this.width * 0.2, this.y, this.width * 0.6, this.height);
+        context.restore();
+
+        if (this.game.spriteUpdate) {
+            this.game.waves.forEach(wave => {
+                wave.enemies.forEach(enemy => {
+                    if (this.game.checkCollision(enemy, this)) {
+                        enemy.hit(this.damage);
+                    }
+                })
+            })
+            this.game.bossArray.forEach(boss => {
+                if (this.game.checkCollision(boss, this) && boss.y >= 0) {
+                    boss.hit(this.damage);
+                }
+            })           
+        }
+    }
+}
+
+class bigLaser extends Laser {
+    constructor(game) {
+        super(game)
+        this.width = 40;
+        this.damage = 0.7;
+    }
+    render(context) {
+        if (this.game.player.energy > 1 && !this.game.player.cooldown) {
+            super.render(context);
+        }
+
+    }
 }
 
 class Player {
@@ -126,16 +187,33 @@ class Player {
         this.lives = 3;
         this.maxLives = 10;
         this.image = document.getElementById('player');
+        this.SmallLaser = new bigLaser(this.game);
+        this.energy = 50;
+        this.maxEnergy = 100;
+        this.cooldown = false;
     }
     draw(context) {
         context.fillRect(this.x + 53, this.y + 40, 99, 110);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if (this.game.keys.indexOf('f') > -1) {
+            this.SmallLaser.render(context);
+        }
     }
     update() {
+        //energy
+        if (this.energy < this.maxEnergy) this.energy += 0.05;
+        if (this.energy < 1) this.cooldown = true;
+        else if (this.energy > this.maxEnergy * 0.2) this.cooldown = false;
+
         if (this.game.keys.indexOf("ArrowLeft") > -1) this.x -= this.speed;
         if (this.game.keys.indexOf("ArrowRight") > -1) this.x += this.speed;
         if (this.x < 0) this.x = 0;
         else if (this.x > this.game.width - this.width) this.x = this.game.width - this.width;
+
+        //hoz bound
+
+        if (this.x < -this.width * 0.5) this.x = -this.width * 0.5;
+        else if (this.x > this.game.width - this.width * 0.5) this.x = this.game.width - this.width * 0.5;
     }
     shoot() {
         const projectile = this.game.getProjectile();
@@ -230,20 +308,20 @@ class Boss {
     draw(context) {
         context.strokeRect(this.x, this.y, this.width, this.height);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
-        if (this.lives > 0) {
+        if (this.lives >= 1) {
             context.save();
             context.textAlign = 'center'
             context.shadowOffsetX = 3;
             context.shadowOffsetY = 3;
             context.shadowColor = 'black';
-            context.fillText(this.lives, this.x + this.width * 0.5, this.y + 50);
+            context.fillText(Math.floor(this.lives), this.x + this.width * 0.5, this.y + 50);
             context.restore();
         }
     }
     update() {
         this.speedY = 0;
         if (this.y < 0) this.y += 4;
-        if (this.x < 0 || this.x > this.game.width - this.width) {
+        if (this.x < 0 || this.x > this.game.width - this.width && this.lives >= 1) {
             this.speedX *= -1;
             this.speedY = this.height * 0.5;
 
@@ -252,14 +330,14 @@ class Boss {
         this.y += this.speedY;
         // collision detection boss/projectiles
         this.game.projectilesPool.forEach(projectile => {
-            if (this.game.checkCollision(this, projectile) && !projectile.free && this.lives > 0 && this.y >= 0) {
+            if (this.game.checkCollision(this, projectile) && !projectile.free && this.lives >= 1 && this.y >= 0) {
                 this.lives--;
                 projectile.reset();
             }
         })
 
         // collision detection boss/player
-        if (this.game.checkCollision(this, this.game.player) && this.lives > 0) {
+        if (this.game.checkCollision(this, this.game.player) && this.lives >= 1) {
             this.game.gameOver = true;
             this.lives = 0;
         }
@@ -378,6 +456,10 @@ class Game {
         // this.waves.push(new Wave(this));
         this.waveCount = 1;
 
+        this.spriteUpdate = false;
+        this.spriteTimer = 0;
+        this.spriteInterval = 150;
+
         this.score = 0;
         this.gameOver = false;
 
@@ -399,7 +481,15 @@ class Game {
             if (index > -1) this.keys.splice(index, 1);
         });
     }
-    render(context) {
+    render(context, deltaTime) {
+        // sprite timing
+        if (this.spriteTimer > this.spriteInterval) {
+            this.spriteUpdate = true;
+            this.spriteTimer = 0;
+        } else {
+            this.spriteUpdate = false;
+            this.spriteTimer += deltaTime;
+        }
         this.drawStatusText(context);
         this.player.draw(context);
         this.player.update();
@@ -407,12 +497,13 @@ class Game {
             projectile.update();
             projectile.draw(context);
         });
+        this.player.draw(context);
+        this.player.update();
         this.bossArray.forEach(boss => {
             boss.draw(context);
             boss.update();
         })
         this.bossArray = this.bossArray.filter(object => !object.markedforDeletion);
-        this.bossArray = this.bossArray.filter(object => !object.markedforDeletion)
         this.waves.forEach(wave => {
             wave.render(context);
             if (wave.enemies.length < 1 && !wave.nextWaveTrigger && !this.gameOver) {
@@ -449,12 +540,19 @@ class Game {
         context.shadowColor = 'black';
         context.fillText('Score: ' + this.score, 20, 40);
         context.fillText('Wave: ' + this.waveCount, 20, 80);
-        for (let i = 0; i < this.player.lives; i++) {
-            context.strokeRect(20 + 20 * i,100,10,15);
+        for (let i = 0; i < this.player.maxLives; i++) {
+            context.strokeRect(20 + 20 * i, 100, 10, 15);
         }
         for (let i = 0; i < this.player.lives; i++) {
-            context.fillRect(20 + 20 * i,100,10,15);
+            context.fillRect(20 + 20 * i, 100, 10, 15);
         }
+        // energy
+        context.save();
+        this.player.cooldown ? context.fillStyle = 'red' : context.fillStyle = 'blue';
+        for (let i = 0; i < this.player.energy; i++) {
+            context.fillRect(20 + 2 * i, 130, 2, 15)
+        }
+        context.restore()
         if (this.gameOver) {
             context.textAlign = 'center';
             context.font = '100px Impact';
@@ -495,11 +593,4 @@ class Game {
         this.score = 0;
         this.gameOver = false;
     }
-}
-
-
-function animate() {
-    game.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    game.render(game.ctx);
-    requestAnimationFrame(animate);
 }
