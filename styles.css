@@ -287,7 +287,7 @@ body {
 }
   
 
-#ZetaScout1 {
+#ZetaScout1, #player, #BetaStriker1, #BossAlien1 {
     display: none;
     width: 1000px;
     height: 1000px;
