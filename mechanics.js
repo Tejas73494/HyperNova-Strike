@@ -107,6 +107,38 @@ function startGame() {
     canvas.width = 600;
     canvas.height = 760;
     document.body.insertBefore(canvas, document.body.childNodes[0]);
+    
+    //Inserting assests
+    const ZetaScoutImg = document.createElement("img");
+    ZetaScoutImg.id = "ZetaScout1";
+    ZetaScoutImg.src = "assets/images/ZetaScout.png";
+    ZetaScoutImg.alt = "ZetaScout";
+    document.body.appendChild(ZetaScoutImg);
+
+    const SpaceShipImg = document.createElement("img");
+    SpaceShipImg.id = "player";
+    SpaceShipImg.src = "assets/images/SpaceShip.png";
+    SpaceShipImg.alt = "SpaceShip";
+    document.body.appendChild(SpaceShipImg);
+
+    const BetaStrikerImg = document.createElement("img");
+    BetaStrikerImg.id = "BetaStriker1";
+    BetaStrikerImg.src = "assets/images/BetaStriker.png";
+    BetaStrikerImg.alt = "BetaStriker";
+    document.body.appendChild(BetaStrikerImg);
+
+    const BossAlienImg = document.createElement("img");
+    BossAlienImg.id = "BossAlien1";
+    BossAlienImg.src = "assets/images/BossAlien.png";
+    BossAlienImg.alt = "BossAlien";
+    document.body.appendChild(BossAlienImg);
+
+    const HeartLivesImg = document.createElement("img");
+    HeartLivesImg.id = "HeartLives1";
+    HeartLivesImg.src = "assets/images/HeartLives.png";
+    HeartLivesImg.alt = "HeartLives";
+    document.body.appendChild(HeartLivesImg);
+    
     game = new Game(canvas);
     game.ctx.fillStyle = "white";
     game.ctx.strokeStyle = "white";
@@ -193,7 +225,7 @@ class Player {
         this.cooldown = false;
     }
     draw(context) {
-        context.fillRect(this.x + 53, this.y + 40, 99, 110);
+        context.fillRect(this.x + 53, this.y + 40, this.width - 101, this.height + 360);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
         if (this.game.keys.indexOf('f') > -1) {
             this.SmallLaser.render(context);
@@ -238,7 +270,7 @@ class Enemy {
         this.markedforDeletion = false;
     }
     draw(context) {
-        //context.strokeRect(this.x, this.y, this.width, this.height);
+        context.strokeRect(this.x, this.y, this.width, this.height);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
     update(x, y) {
@@ -293,8 +325,8 @@ class BetaStriker extends Enemy {
 class Boss {
     constructor(game, bossLives){
         this.game = game;
-        this.width = 200;
-        this.height = 200;
+        this.width = 300;
+        this.height = 300;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = -this.height;
         this.speedX = Math.random() < 0.5 ? -1 : 1;
@@ -306,7 +338,8 @@ class Boss {
         
     }
     draw(context) {
-        context.strokeRect(this.x, this.y, this.width, this.height);
+        //context.fillRect(this.x + 53, this.y + 40, 99, 110);
+        context.strokeRect(this.x + 45, this.y + 90, this.width - 75, this.height - 200);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
         if (this.lives >= 1) {
             context.save();
@@ -452,7 +485,7 @@ class Game {
         this.waves = [];
         this.columns = 2;
         this.rows = 2;
-        this.enemySize = 80;
+        this.enemySize = 200;
         // this.waves.push(new Wave(this));
         this.waveCount = 1;
 
