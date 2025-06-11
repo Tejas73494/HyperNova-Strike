@@ -215,8 +215,8 @@ class bigLaser extends Laser {
 class Player {
     constructor(game) {
         this.game = game;
-        this.width = 200;
-        this.height = 200;
+        this.width = 300;
+        this.height = 300;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = this.game.height - this.height;
         this.speed = 5;
@@ -232,7 +232,7 @@ class Player {
         this.isRechargedSoundPlayed = (this.energy >= this.maxEnergy * 0.2);
     }
     draw(context) {
-        context.fillRect(this.x + 53, this.y + 40, this.width - 101, this.height + 360);
+        context.fillRect(this.x + 53, this.y + 40, this.width - 201, this.height + 460);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
         if (this.game.keys.indexOf('f') > -1) {
             this.BigLaser.render(context);

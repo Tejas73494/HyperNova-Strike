@@ -72,22 +72,25 @@ body {
     white-space: nowrap;
 }
 
-
 #StartBackgroundImage, #StartBackgroundImage2 {
-    position: absolute;
-    height: 250px;
-    width: auto;
-    left: 42%;
     animation: bobbing 2s infinite ease-in-out;
 
 }
 
 #StartBackgroundImage {
-    top: 30%;
+    position: absolute;
+    height: 345px;
+    width: auto;
+    top: 22%;
+    left: 39.3%;
 }
 
 #StartBackgroundImage2 {
-    top: 10%;
+    position: absolute;
+    height: 250px;
+    width: auto;
+    left: 42%;
+    top: 8%;
     animation-delay: 0.2s; 
 }
 
