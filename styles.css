@@ -281,13 +281,33 @@ body {
     left: 23.2%;
 }
 
+/* Your stylesheet.css */
+
 #canvas {
     border: 5px solid black;
     position: absolute;
     right: 445px;
     top: 5px;
-    background: url('background.png')
+
+    background-image: url('background.png'), url('background.png');
+    background-repeat: repeat-y;
+    background-size: auto;
+
+    background-position: 0 0, 0 -1333px;
+
+    animation: scrollBackground 6s linear infinite;
 }
+
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0, 0 -1333px;
+    }
+    to {
+        background-position: 0 1333px, 0 0;
+    }
+}
+
+
   
 
 #ZetaScout1, #BetaStriker1, #OmegaTitan1, #player, #BossAlien1, #HeartLives1 {
