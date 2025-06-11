@@ -308,6 +308,6 @@ body {
 
   
 
-#ZetaScout1, #BetaStriker1, #OmegaTitan1, #player, #BossAlien1, #HeartLives1 {
+#ZetaScout1, #BetaStriker1, #OmegaTitan1, #player, #BossAlien1, #HeartLives1, #EnemyDeath1 {
     display: none;
 }

@@ -215,8 +215,8 @@ class bigLaser extends Laser {
 class Player {
     constructor(game) {
         this.game = game;
-        this.width = 370;
-        this.height = 370;
+        this.width = 320;
+        this.height = 320;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = this.game.height - this.height;
         this.speed = 5;
@@ -308,36 +308,54 @@ class Enemy {
         this.x = 0;
         this.y = 0;
         this.markedforDeletion = false;
+
+        this.isDying = false;
+        this.deathAnimationTimer = 0; 
+        this.deathAnimationDuration = 150;
+
+        this.deathImage = document.getElementById('EnemyDeathImg1');
     }
     draw(context) {
-        context.strokeRect(this.x, this.y, this.width, this.height);
-        context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if (this.isDying) {
+            context.drawImage(this.deathImage, this.x, this.y, this.width, this.height);
+        } else {
+            context.strokeRect(this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
     }
     update(x, y) {
         this.x = x + this.positionX;
         this.y = y + this.positionY;
         // check collision enemies - projectiles
         this.game.projectilesPool.forEach(projectile => {
-            if (!projectile.free && this.game.checkCollision(this, projectile)) {
+            if (!projectile.free && this.game.checkCollision(this, projectile) && this.lives > 0) {
                 this.hit(1);
                 projectile.reset();
             }
         });
 
-        // enemy destroyed
-        if (this.lives < 1) {
-            this.markedforDeletion = true;
-            EnemyDeath.play()
-            EnemyDeath.currentTime = 0;
-            if (!this.game.gameOver) this.game.score += this.maxLives;
-        }
         // check collision enemies - player
         if (this.game.checkCollision(this, this.game.player)) {
             this.markedforDeletion = true;
             if (!this.game.gameOver && this.game.score > 0) this.game.score--;
             this.game.player.lives--;
-
         }
+
+        // enemy destroyed
+        if (this.lives < 1 && !this.isDying) {
+            this.isDying = true;
+            this.deathAnimationTimer = 0;
+            EnemyDeath.play();
+            EnemyDeath.currentTime = 0;
+            if (!this.game.gameOver) this.game.score += this.maxLives;
+        }
+        if (this.isDying) {
+            this.deathAnimationTimer += this.game.deltaTime;
+            if (this.deathAnimationTimer >= this.deathAnimationDuration) {
+                this.markedforDeletion = true;
+            }
+        }
+
         // lose condition 
         if (this.y + this.height > this.game.height || this.game.player.lives < 1) {
             this.game.gameOver = true;
@@ -388,12 +406,22 @@ class Boss {
         this.maxLives = this.lives;
         this.markedforDeletion = false;
         this.image = document.getElementById('BossAlien1');
+
+        this.isDying = false;
+        this.deathAnimationTimer = 0; 
+        this.deathAnimationDuration = 550;
+
+        this.BossImage = document.getElementById('BossDeathImg1');
+
         
     }
     draw(context) {
-        //context.fillRect(this.x + 53, this.y + 40, 99, 110);
-        context.strokeRect(this.x + 45, this.y + 90, this.width - 75, this.height - 200);
-        context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if (this.isDying) {
+            context.drawImage(this.BossImage, this.x, this.y, this.width, this.height);
+        } else {
+            context.strokeRect(this.x + 45, this.y + 90, this.width - 75, this.height - 200);
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
         if (this.lives >= 1) {
             context.save();
             context.textAlign = 'center'
@@ -432,16 +460,24 @@ class Boss {
 
 
         // boss destroyed
-        if (this.lives < 1) {
+        if (this.lives < 1 && !this.isDying) {
+            this.isDying = true;
+            this.deathAnimationTimer = 0;
             BossHit.pause();
             BossDeath.play();
-            this.markedforDeletion = true;
+            //this.markedforDeletion = true;
             BossBattleMusic.pause();
             BossBattleMusic.currentTime = 0;
             this.game.score += this.maxLives;
             this.game.bossLives += 5;
             if (!this.game.gameOver) this.game.newWave();
             MainMusic.play();
+        }
+        if (this.isDying) {
+            this.deathAnimationTimer += this.game.deltaTime;
+            if (this.deathAnimationTimer >= this.deathAnimationDuration) {
+                this.markedforDeletion = true;
+            }
         }
         // lose condition
         if (this.y + this.height > this.game.height) this.game.gameOver = true;
@@ -607,6 +643,7 @@ class Game {
         });
     }
     render(context, deltaTime) {
+        this.deltaTime = deltaTime
         // sprite timing
         if (this.spriteTimer > this.spriteInterval) {
             this.spriteUpdate = true;
@@ -716,7 +753,6 @@ class Game {
         } else {
             if (this.lastWaveWasBoss) {
                 const postBossDelay = 2700;
-                console.log("Delaying next wave after boss...");
                 if (typeof BackgroundMusic !== 'undefined' && BackgroundMusic) {
                      BackgroundMusic.pause();
                 }
@@ -803,6 +839,18 @@ function CreateGameImgAssets() {
     HeartLivesImg.src = "assets/images/HeartLives.png";
     HeartLivesImg.alt = "HeartLives";
     document.body.appendChild(HeartLivesImg);
+
+    const EnemyDeathImg = document.createElement("img");
+    EnemyDeathImg.id = "EnemyDeathImg1";
+    EnemyDeathImg.src = "assets/images/EnemyDeath.png";
+    EnemyDeathImg.alt = "EnemyDeathImg";
+    document.body.appendChild(EnemyDeathImg);
+
+    const BossDeathImg = document.createElement("img");
+    BossDeathImg.id = "BossDeathImg1";
+    BossDeathImg.src = "assets/images/BossDeath.png";
+    BossDeathImg.alt = "BossDeathImg";
+    document.body.appendChild(BossDeathImg);
 }
 
 
@@ -881,7 +929,7 @@ function CreateGameAudioAssets() {
     BossDeath.id = "BossDeath";
     BossDeath.src = "assets/sounds/BossDeath.mp3";
     BossDeath.type = "audio/mpeg";
-    BossDeath.volume = 1.0;
+    BossDeath.volume = 0.6;
     document.body.appendChild(BossDeath);
 
     const MainMusic = document.createElement("audio");
@@ -889,6 +937,6 @@ function CreateGameAudioAssets() {
     MainMusic.src = "assets/sounds/MainMusic.mp3";
     MainMusic.type = "audio/mpeg";
     MainMusic.loop = true;
-    MainMusic.volume = 0.2;
+    MainMusic.volume = 0.4;
     document.body.appendChild(MainMusic);
 }
