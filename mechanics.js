@@ -1,102 +1,135 @@
-let game, canvas;
+//Defining variables
 
+let game, canvas;
+const InitialStart = document.getElementById("InitialStart");
+const playButton = document.getElementById("play-button");
+const gameOverlay = document.getElementById("game-overlay");
+const BackgroundMusic = document.getElementById("BackgroundMusic");
+const ClickMenu = document.getElementById("ClickMenu");
+const Instructions = document.getElementById("Instructions");
+const ControlsSuperWeapon1 = document.getElementById("ControlsSuperWeapon");
+const HealthEnemyProperties = document.getElementById("HealthEnemyProperties");
+const HealthBossProperties1 = document.getElementById("HealthBossProperties");
+const GameUI1 = document.getElementById("GameUI");
+const Back = document.getElementById("Back");
+const ShipControl = document.getElementById("ShipControl");
+const SuperWeaponInstructions = document.getElementById("SuperWeaponInstructions");
+const goBackToHowtoplay1 = document.getElementById("goBackToHowtoplay")
+const ZetaScout1 = document.getElementById("ZetaScout");
+const ZetaScoutProperties1 = document.getElementById("ZetaScoutProperties");
+const BetaStriker1 = document.getElementById("BetaStriker");
+const BetaStrikerProperties1 = document.getElementById("BetaStrikerProperties");
+const OmegaTitan1 = document.getElementById("OmegaTitan");
+const OmegaTitanProperties1 = document.getElementById("OmegaTitanProperties");
+const HealthLives1 = document.getElementById("HealthLives");
+const HealthLivesProperties1 = document.getElementById("HealthLivesProperties");
+const BossAlienShooting1 = document.getElementById("BossAlienShooting");
+const BossAlienBeam1 = document.getElementById("BossAlienBeam");
+const BossProperties1 = document.getElementById("BossProperties");
 
 // This function is to help initialize the background music  
 function InitialGameStart() {
-    document.getElementById("InitialStart").style.display = "block";
-    document.getElementById("play-button").style.display = "none";
-    document.getElementById("game-overlay").style.display = "none";
-    document.getElementById("BackgroundMusic").play();
+    //BackgroundMusic.play();
+    InitialStart.style.display = "block";
+    playButton.style.display = "none";
+    gameOverlay.style.display = "none";
 }
 
 // These next 7 functions control the how-to-play page
 function playInstructions() {
-    document.getElementById("Instructions").style.display = "none";
-    document.getElementById("ControlsSuperWeapon").style.display = "block";
-    document.getElementById("HealthEnemyProperties").style.display = "block";
-    document.getElementById("HealthBossProperties").style.display = "block";
-    document.getElementById("GameUI").style.display = "block";
-    document.getElementById("Back").style.display = "block";
+    ClickMenu.play();
+    Instructions.style.display = "none";
+    ControlsSuperWeapon1.style.display = "block";
+    HealthEnemyProperties.style.display = "block";
+    HealthBossProperties1.style.display = "block";
+    GameUI1.style.display = "block";
+    Back.style.display = "block";
 }
 
 function ControlsSuperWeapon() {
-    document.getElementById("ControlsSuperWeapon").style.display = "none";
-    document.getElementById("HealthEnemyProperties").style.display = "none";
-    document.getElementById("HealthBossProperties").style.display = "none";
-    document.getElementById("GameUI").style.display = "none";
-    document.getElementById("Back").style.display = "none";
-    document.getElementById("ShipControl").style.display = "block";
-    document.getElementById("SuperWeaponInstructions").style.display = "block";
-    document.getElementById("goBackToHowtoplay").style.display = "block";
+    ClickMenu.play();
+    ControlsSuperWeapon1.style.display = "none";
+    HealthEnemyProperties.style.display = "none";
+    HealthBossProperties1.style.display = "none";
+    GameUI1.style.display = "none";
+    Back.style.display = "none";
+    ShipControl.style.display = "block";
+    SuperWeaponInstructions.style.display = "block";
+    goBackToHowtoplay1.style.display = "block";
 }
 
 function EnemyProperties() {
-    document.getElementById("ControlsSuperWeapon").style.display = "none";
-    document.getElementById("HealthEnemyProperties").style.display = "none";
-    document.getElementById("HealthBossProperties").style.display = "none";
-    document.getElementById("GameUI").style.display = "none";
-    document.getElementById("Back").style.display = "none";
-    document.getElementById("goBackToHowtoplay").style.display = "block";
-    document.getElementById("ZetaScout").style.display = "block";
-    document.getElementById("ZetaScoutProperties").style.display = "block";
-    document.getElementById("BetaStriker").style.display = "block";
-    document.getElementById("BetaStrikerProperties").style.display = "block";
-    document.getElementById("OmegaTitan").style.display = "block";
-    document.getElementById("OmegaTitanProperties").style.display = "block";
+    ClickMenu.play();
+    ControlsSuperWeapon1.style.display = "none";
+    HealthEnemyProperties.style.display = "none";
+    HealthBossProperties1.style.display = "none";
+    GameUI1.style.display = "none";
+    Back.style.display = "none";
+    goBackToHowtoplay1.style.display = "block";
+    ZetaScout1.style.display = "block";
+    ZetaScoutProperties1.style.display = "block";
+    BetaStriker1.style.display = "block";
+    BetaStrikerProperties1.style.display = "block";
+    OmegaTitan1.style.display = "block";
+    OmegaTitanProperties1.style.display = "block";
 }
 
 function HealthBossProperties() {
-    document.getElementById("ControlsSuperWeapon").style.display = "none";
-    document.getElementById("HealthEnemyProperties").style.display = "none";
-    document.getElementById("HealthBossProperties").style.display = "none";
-    document.getElementById("GameUI").style.display = "none";
-    document.getElementById("Back").style.display = "none";
-    document.getElementById("goBackToHowtoplay").style.display = "block";
-    document.getElementById("HealthLives").style.display = "block";
-    document.getElementById("HealthLivesProperties").style.display = "block";
-    document.getElementById("BossAlienShooting").style.display = "block";
-    document.getElementById("BossAlienBeam").style.display = "block";
-    document.getElementById("BossProperties").style.display = "block";
+    ClickMenu.play();
+    ControlsSuperWeapon1.style.display = "none";
+    HealthEnemyProperties.style.display = "none";
+    HealthBossProperties1.style.display = "none";
+    GameUI1.style.display = "none";
+    Back.style.display = "none";
+    goBackToHowtoplay1.style.display = "block";
+    HealthLives1.style.display = "block";
+    HealthLivesProperties1.style.display = "block";
+    BossAlienShooting1.style.display = "block";
+    BossAlienBeam1.style.display = "block";
+    BossProperties1.style.display = "block";
 }
 
 function GameUI() {
-    document.getElementById("ControlsSuperWeapon").style.display = "none";
-    document.getElementById("HealthEnemyProperties").style.display = "none";
-    document.getElementById("HealthBossProperties").style.display = "none";
-    document.getElementById("GameUI").style.display = "none";
-    document.getElementById("Back").style.display = "none";
-    document.getElementById("goBackToHowtoplay").style.display = "block";
+    ClickMenu.play();
+    ControlsSuperWeapon1.style.display = "none";
+    HealthEnemyProperties.style.display = "none";
+    HealthBossProperties1.style.display = "none";
+    GameUI1.style.display = "none";
+    Back.style.display = "none";
+    goBackToHowtoplay1.style.display = "block";
 }
 
 function goBackToInstructions() {
-    document.getElementById("Instructions").style.display = "block";
-    document.getElementById("ControlsSuperWeapon").style.display = "none";
-    document.getElementById("HealthEnemyProperties").style.display = "none";
-    document.getElementById("HealthBossProperties").style.display = "none";
-    document.getElementById("GameUI").style.display = "none";
-    document.getElementById("Back").style.display = "none";
+    ClickMenu.play();
+    Instructions.style.display = "block";
+    ControlsSuperWeapon1.style.display = "none";
+    HealthEnemyProperties.style.display = "none";
+    HealthBossProperties1.style.display = "none";
+    GameUI1.style.display = "none";
+    Back.style.display = "none";
 }
 
 function goBackToHowtoplay() {
-    document.getElementById("ControlsSuperWeapon").style.display = "block";
-    document.getElementById("HealthEnemyProperties").style.display = "block";
-    document.getElementById("HealthBossProperties").style.display = "block";
-    document.getElementById("GameUI").style.display = "block";
-    document.getElementById("Back").style.display = "block";
-    document.getElementById("goBackToHowtoplay").style.display = "none";
-    document.getElementById("SuperWeaponInstructions").style.display = "none";
-    document.getElementById("ShipControl").style.display = "none";
-    document.getElementById("ZetaScout").style.display = "none";
-    document.getElementById("ZetaScoutProperties").style.display = "none";
-    document.getElementById("BetaStriker").style.display = "none";
-    document.getElementById("BetaStrikerProperties").style.display = "none";
-    document.getElementById("OmegaTitan").style.display = "none";
-    document.getElementById("OmegaTitanProperties").style.display = "none";
-    document.getElementById("HealthLives").style.display = "none";
-    document.getElementById("HealthLivesProperties").style.display = "none";
-    document.getElementById("BossAlienShooting").style.display = "none";
-    document.getElementById("BossAlienBeam").style.display = "none";
-    document.getElementById("BossProperties").style.display = "none";
+    ClickMenu.play();
+    ControlsSuperWeapon1.style.display = "block";
+    HealthEnemyProperties.style.display = "block";
+    HealthBossProperties1.style.display = "block";
+    GameUI1.style.display = "block";
+    Back.style.display = "block";
+    goBackToHowtoplay1.style.display = "none";
+    SuperWeaponInstructions.style.display = "none";
+    ShipControl.style.display = "none";
+    ZetaScout1.style.display = "none";
+    ZetaScoutProperties1.style.display = "none";
+    BetaStriker1.style.display = "none";
+    BetaStrikerProperties1.style.display = "none";
+    OmegaTitan1.style.display = "none";
+    OmegaTitanProperties1.style.display = "none";
+    HealthLives1.style.display = "none";
+    HealthLivesProperties1.style.display = "none";
+    BossAlienShooting1.style.display = "none";
+    BossAlienBeam1.style.display = "none";
+    BossProperties1.style.display = "none";
 }
 
 function startGame() {
@@ -107,44 +140,8 @@ function startGame() {
     canvas.width = 600;
     canvas.height = 760;
     document.body.insertBefore(canvas, document.body.childNodes[0]);
-    
-    //Inserting assests
-    const ZetaScoutImg = document.createElement("img");
-    ZetaScoutImg.id = "ZetaScout1";
-    ZetaScoutImg.src = "assets/images/ZetaScout.png";
-    ZetaScoutImg.alt = "ZetaScout";
-    document.body.appendChild(ZetaScoutImg);
-
-    const BetaStrikerImg = document.createElement("img");
-    BetaStrikerImg.id = "BetaStriker1";
-    BetaStrikerImg.src = "assets/images/BetaStriker.png";
-    BetaStrikerImg.alt = "BetaStriker";
-    document.body.appendChild(BetaStrikerImg);
-
-    const OmegaTitanImg = document.createElement("img");
-    OmegaTitanImg.id = "OmegaTitan1";
-    OmegaTitanImg.src = "assets/images/OmegaTitan.png";
-    OmegaTitanImg.alt = "OmegaTitanImg";
-    document.body.appendChild(OmegaTitanImg);
-
-    const SpaceShipImg = document.createElement("img");
-    SpaceShipImg.id = "player";
-    SpaceShipImg.src = "assets/images/SpaceShip.png";
-    SpaceShipImg.alt = "SpaceShip";
-    document.body.appendChild(SpaceShipImg);
-
-    const BossAlienImg = document.createElement("img");
-    BossAlienImg.id = "BossAlien1";
-    BossAlienImg.src = "assets/images/BossAlien.png";
-    BossAlienImg.alt = "BossAlien";
-    document.body.appendChild(BossAlienImg);
-
-    const HeartLivesImg = document.createElement("img");
-    HeartLivesImg.id = "HeartLives1";
-    HeartLivesImg.src = "assets/images/HeartLives.png";
-    HeartLivesImg.alt = "HeartLives";
-    document.body.appendChild(HeartLivesImg);
-    
+    CreateGameImgAssets();
+    CreateGameAudioAssets();
     game = new Game(canvas);
     game.ctx.fillStyle = "white";
     game.ctx.strokeStyle = "white";
@@ -159,11 +156,9 @@ function startGame() {
         requestAnimationFrame(animate);
     }
     animate(0);
+    ShipLaunch.play();
+    MainMusic.play();
 }
-
-
-
-
 
 class Laser {
     constructor(game) {
@@ -175,6 +170,7 @@ class Laser {
     render(context) {
         this.x = this.game.player.x + this.game.player.width * 0.5;
         this.game.player.energy -= this.damage;
+        
 
         context.save();
         context.fillStyle = 'blue';
@@ -193,6 +189,8 @@ class Laser {
             })
             this.game.bossArray.forEach(boss => {
                 if (this.game.checkCollision(boss, this) && boss.y >= 0) {
+                    BossHit.play();
+                    BossHit.currentTime = 0;
                     boss.hit(this.damage);
                 }
             })           
@@ -225,24 +223,61 @@ class Player {
         this.lives = 3;
         this.maxLives = 5;
         this.image = document.getElementById('player');
-        this.SmallLaser = new bigLaser(this.game);
+        this.BigLaser = new bigLaser(this.game);
         this.energy = 50;
         this.maxEnergy = 100;
-        this.cooldown = false;
+        this.cooldown = (this.energy < this.maxEnergy * 0.2);
+
+        this.isRechargingSoundPlaying = false; // Flag for the sound that plays when energy is low
+        this.isRechargedSoundPlayed = (this.energy >= this.maxEnergy * 0.2);
     }
     draw(context) {
         context.fillRect(this.x + 53, this.y + 40, this.width - 101, this.height + 360);
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
         if (this.game.keys.indexOf('f') > -1) {
-            this.SmallLaser.render(context);
+            this.BigLaser.render(context);
         }
     }
     update() {
+        const wasInCooldown = this.cooldown;
+
         //energy
         if (this.energy < this.maxEnergy) this.energy += 0.05;
-        if (this.energy < 1) this.cooldown = true;
+        if (this.energy < 1) {
+            this.cooldown = true;
+        }
         else if (this.energy > this.maxEnergy * 0.2) this.cooldown = false;
 
+        if (this.cooldown && !wasInCooldown) {
+            if (typeof LaserDown !== 'undefined' && LaserDown) {
+                LaserBeam.pause();
+                LaserDown.currentTime = 0;
+                LaserDown.play();
+            }
+            this.isRechargingSoundPlaying = true;
+            this.isRechargedSoundPlayed = false;
+        }
+        if (!this.cooldown && wasInCooldown) {
+            if (typeof LaserUp !== 'undefined' && LaserUp) {
+                if (!this.isRechargedSoundPlayed) {
+                    LaserUp.currentTime = 0;
+                    LaserUp.play();
+                    this.isRechargedSoundPlayed = true;
+                }
+            }
+            if (typeof LaserDown !== 'undefined' && LaserDown && this.isRechargingSoundPlaying) {
+                LaserDown.pause();
+                LaserDown.currentTime = 0;
+            }
+            this.isRechargingSoundPlaying = false;
+        }
+        if (this.energy >= this.maxEnergy && !this.isRechargedSoundPlayed) {
+            if (typeof LaserUp !== 'undefined' && LaserUp) {
+                LaserUp.currentTime = 0;
+                LaserUp.play();
+                this.isRechargedSoundPlayed = true;
+            }
+        }
         if (this.game.keys.indexOf("ArrowLeft") > -1) this.x -= this.speed;
         if (this.game.keys.indexOf("ArrowRight") > -1) this.x += this.speed;
         if (this.x < 0) this.x = 0;
@@ -283,13 +318,17 @@ class Enemy {
         this.y = y + this.positionY;
         // check collision enemies - projectiles
         this.game.projectilesPool.forEach(projectile => {
-            if (!projectile.free && this.game.checkCollision(this, projectile)){
+            if (!projectile.free && this.game.checkCollision(this, projectile)) {
                 this.hit(1);
                 projectile.reset();
             }
         });
+
+        // enemy destroyed
         if (this.lives < 1) {
             this.markedforDeletion = true;
+            EnemyDeath.play()
+            EnemyDeath.currentTime = 0;
             if (!this.game.gameOver) this.game.score += this.maxLives;
         }
         // check collision enemies - player
@@ -337,7 +376,7 @@ class OmegaTitan extends Enemy {
 }
 
 class Boss {
-    constructor(game, bossLives){
+    constructor(game, bossLives) {
         this.game = game;
         this.width = 300;
         this.height = 300;
@@ -380,6 +419,8 @@ class Boss {
             if (this.game.checkCollision(this, projectile) && !projectile.free && this.lives >= 1 && this.y >= 0) {
                 this.lives--;
                 projectile.reset();
+                BossHit.play();
+                BossHit.currentTime = 0;
             }
         })
 
@@ -392,10 +433,15 @@ class Boss {
 
         // boss destroyed
         if (this.lives < 1) {
+            BossHit.pause();
+            BossDeath.play();
             this.markedforDeletion = true;
+            BossBattleMusic.pause();
+            BossBattleMusic.currentTime = 0;
             this.game.score += this.maxLives;
             this.game.bossLives += 5;
             if (!this.game.gameOver) this.game.newWave();
+            MainMusic.play();
         }
         // lose condition
         if (this.y + this.height > this.game.height) this.game.gameOver = true;
@@ -439,7 +485,7 @@ class Wave {
             for (let x = 0; x < this.game.columns; x++) {
                 let enemyX = x * this.game.enemySize;
                 let enemyY = y * this.game.enemySize;
-                if (Math.random() < 0.5){
+                if (Math.random() < 0.5) {
                     this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
 
                 } else {
@@ -499,9 +545,12 @@ class Game {
         this.waves = [];
         this.columns = 2;
         this.rows = 2;
-        this.enemySize = 200;
+        this.enemySize = 100;
         this.image = document.getElementById('HeartLives1')
-        // this.waves.push(new Wave(this));
+        //this.waves.push(new Wave(this));
+        setTimeout(() => {
+            this.waves.push(new Wave(this));
+        }, 6000)
         this.waveCount = 1;
 
         this.spriteUpdate = false;
@@ -510,21 +559,51 @@ class Game {
 
         this.score = 0;
         this.gameOver = false;
+        this.gameOverPlayed = false;
 
         this.bossArray = [];
         this.bossLives = 10;
-        this.restart();
+        this.laserSoundPlaying = false;
+        this.lastWaveWasBoss = false;
 
         // event listeners
         window.addEventListener("keydown", e => {
-            if (e.key === " " && !this.fired) this.player.shoot();
-            this.fired = true;
+            if (e.key === " ") {
+                if (!this.fired) {
+                    this.player.shoot();
+                    BlastorNoise.play();
+                    BlastorNoise.currentTime = 0;
+                }
+                this.fired = true;
+            }
+
+            if (e.key === 'f') {
+                // Check if the sound is NOT already playing
+                if (!this.laserSoundPlaying) {
+                    if (typeof LaserBeam !== 'undefined' && LaserBeam && !this.player.cooldown) {
+                        LaserBeam.play();
+                    }
+                    this.laserSoundPlaying = true;
+                }
+            }
+
             if (this.keys.indexOf(e.key) === -1) this.keys.push(e.key);
             
             if (e.key === 'r' && this.gameOver) this.restart();
         });
         window.addEventListener("keyup", e => {
             this.fired = false;
+
+            if (e.key === 'f') {
+                if (this.laserSoundPlaying) {
+                    if (typeof LaserBeam !== 'undefined' && LaserBeam) {
+                        LaserBeam.pause();
+                        LaserBeam.currentTime = 0;
+                        LaserBeam.loop = false;
+                    }
+                    this.laserSoundPlaying = false;
+                }
+            }
             const index = this.keys.indexOf(e.key);
             if (index > -1) this.keys.splice(index, 1);
         });
@@ -600,13 +679,23 @@ class Game {
         context.restore();
 
         context.save()
-        this.player.cooldown ? context.fillStyle = 'red' : context.fillStyle = 'blue';
+        if (this.player.cooldown) {
+            context.fillStyle = 'red'
+        } else {
+            context.fillStyle = 'blue';
+        }
         if (this.player.energy >= this.player.maxEnergy) context.fillStyle = 'green';
         for (let i = 0; i < this.player.energy; i++) {
             context.fillRect(20 + 2 * i, 160, 2, 15)
         }
         context.restore()
         if (this.gameOver) {
+            MainMusic.pause();
+            if (!this.gameOverPlayed) {
+                GameOver.currentTime = 0;
+                GameOver.play();
+                this.gameOverPlayed = true;
+            }
             context.textAlign = 'center';
             context.font = '100px Impact';
             context.fillText('GAME OVER', this.width * 0.5, this.height * 0.5);
@@ -618,17 +707,45 @@ class Game {
     newWave() {
         this.waveCount++;
         if (this.player.lives < this.player.maxLives) this.player.lives++;
-        if (this.waveCount % 2 === 0) {
+
+        if (this.waveCount % 5 === 0) {
+            WaveCompleted.play()
+            WaveCompleted.currentTime = 0;
             this.bossArray.push(new Boss(this, this.bossLives));
+            MainMusic.pause();
+            BossBattleMusic.play();
+            this.lastWaveWasBoss = true;
         } else {
-            if (Math.random() < 0.5 && this.columns * this.enemySize < this.width * 0.8) {
-                this.columns++;
-            } else if (this.rows * this.enemySize < this.height * 0.6) {
-                this.rows++;
+            if (this.lastWaveWasBoss) {
+                const postBossDelay = 2700;
+                console.log("Delaying next wave after boss...");
+                if (typeof BackgroundMusic !== 'undefined' && BackgroundMusic) {
+                     BackgroundMusic.pause();
+                }
+
+                setTimeout(() => {
+                    if (Math.random() < 0.5 && this.columns * this.enemySize < this.width * 0.8) {
+                        this.columns++;
+                    } else if (this.rows * this.enemySize < this.height * 0.6) {
+                        this.rows++;
+                    }
+                    WaveCompleted.play();
+                    WaveCompleted.currentTime = 0;
+                    this.waves.push(new Wave(this));
+                    this.lastWaveWasBoss = false;
+                }, postBossDelay);
+            } else {
+                if (Math.random() < 0.5 && this.columns * this.enemySize < this.width * 0.8) {
+                    this.columns++;
+                } else if (this.rows * this.enemySize < this.height * 0.6) {
+                    this.rows++;
+                }
+                WaveCompleted.play()
+                WaveCompleted.currentTime = 0;
+                this.waves.push(new Wave(this));
+                this.lastWaveWasBoss = false;
             }
-            this.waves.push(new Wave(this));
         }
-        
         this.waves = this.waves.filter(object => !object.markedforDeletion);
     }
     restart() {
@@ -639,11 +756,141 @@ class Game {
         this.waves = [];
         this.bossArray = [];
         this.bossLives = 10;
-        //this.waves.push(new Wave(this));
-        this.bossArray.push(new Boss(this, this.bossLives));
+        this.waves.push(new Wave(this));
         this.waveCount = 1;
 
         this.score = 0;
         this.gameOver = false;
+        this.gameOverPlayed = false;
+        this.player.energy = 50;
+        MainMusic.currentTime = 0;
+        MainMusic.play();
     }
+}
+
+function CreateGameImgAssets() {
+    //Creating/Inserting Image assests
+    const ZetaScoutImg = document.createElement("img");
+    ZetaScoutImg.id = "ZetaScout1";
+    ZetaScoutImg.src = "assets/images/ZetaScout.png";
+    ZetaScoutImg.alt = "ZetaScout";
+    document.body.appendChild(ZetaScoutImg);
+
+    const BetaStrikerImg = document.createElement("img");
+    BetaStrikerImg.id = "BetaStriker1";
+    BetaStrikerImg.src = "assets/images/BetaStriker.png";
+    BetaStrikerImg.alt = "BetaStriker";
+    document.body.appendChild(BetaStrikerImg);
+
+    const OmegaTitanImg = document.createElement("img");
+    OmegaTitanImg.id = "OmegaTitan1";
+    OmegaTitanImg.src = "assets/images/OmegaTitan.png";
+    OmegaTitanImg.alt = "OmegaTitanImg";
+    document.body.appendChild(OmegaTitanImg);
+
+    const SpaceShipImg = document.createElement("img");
+    SpaceShipImg.id = "player";
+    SpaceShipImg.src = "assets/images/SpaceShip.png";
+    SpaceShipImg.alt = "SpaceShip";
+    document.body.appendChild(SpaceShipImg);
+
+    const BossAlienImg = document.createElement("img");
+    BossAlienImg.id = "BossAlien1";
+    BossAlienImg.src = "assets/images/BossAlien.png";
+    BossAlienImg.alt = "BossAlien";
+    document.body.appendChild(BossAlienImg);
+
+    const HeartLivesImg = document.createElement("img");
+    HeartLivesImg.id = "HeartLives1";
+    HeartLivesImg.src = "assets/images/HeartLives.png";
+    HeartLivesImg.alt = "HeartLives";
+    document.body.appendChild(HeartLivesImg);
+}
+
+
+function CreateGameAudioAssets() {
+    //Creating/Inserting Audio assests
+    const BlastorNoise = document.createElement("audio");
+    BlastorNoise.id = "BlastorNoise";
+    BlastorNoise.src = "assets/sounds/BlasterNoise.mp3";
+    BlastorNoise.type = "audio/mpeg";
+    BlastorNoise.volume = 0.5;
+    document.body.appendChild(BlastorNoise);
+
+    const BossBattleMusic = document.createElement("audio");
+    BossBattleMusic.id = "BossBattleMusic";
+    BossBattleMusic.src = "assets/sounds/BossBattleMusic.mp3";
+    BossBattleMusic.type = "audio/mpeg";
+    BossBattleMusic.loop = true;
+    BossBattleMusic.volume = 1.0;
+    document.body.appendChild(BossBattleMusic);
+
+    const EnemyDeath = document.createElement("audio");
+    EnemyDeath.id = "EnemyDeath";
+    EnemyDeath.src = "assets/sounds/EnemeyDeath.mp3";
+    EnemyDeath.type = "audio/mpeg";
+    EnemyDeath.volume = 0.2;
+    document.body.appendChild(EnemyDeath);
+
+    const BossHit = document.createElement("audio");
+    BossHit.id = "BossHit";
+    BossHit.src = "assets/sounds/BossHit.mp3";
+    BossHit.type = "audio/mpeg";
+    BossHit.volume = 0.4;
+    document.body.appendChild(BossHit);
+
+    const GameOver = document.createElement("audio");
+    GameOver.id = "GameOver";
+    GameOver.src = "assets/sounds/GameOver.mp3";
+    GameOver.type = "audio/mpeg";
+    GameOver.volume = 0.2;
+    document.body.appendChild(GameOver);
+
+    const LaserBeam = document.createElement("audio");
+    LaserBeam.id = "LaserBeam";
+    LaserBeam.src = "assets/sounds/LaserBeam.mp3";
+    LaserBeam.type = "audio/mpeg";
+    document.body.appendChild(LaserBeam);
+
+    const ShipLaunch = document.createElement("audio");
+    ShipLaunch.id = "ShipLaunch";
+    ShipLaunch.src = "assets/sounds/ShipLaunch.mp3";
+    ShipLaunch.type = "audio/mpeg";
+    ShipLaunch.volume = 0.4;
+    document.body.appendChild(ShipLaunch);
+
+    const WaveCompleted = document.createElement("audio");
+    WaveCompleted.id = "WaveCompleted";
+    WaveCompleted.src = "assets/sounds/WaveCompleted.mp3";
+    WaveCompleted.type = "audio/mpeg";
+    WaveCompleted.volume = 0.4;
+    document.body.appendChild(WaveCompleted);
+
+    const LaserDown = document.createElement("audio");
+    LaserDown.id = "LaserDown";
+    LaserDown.src = "assets/sounds/LaserDown.mp3";
+    LaserDown.type = "audio/mpeg";
+    LaserDown.volume = 1.0;
+    document.body.appendChild(LaserDown);
+
+    const LaserUp = document.createElement("audio");
+    LaserUp.id = "LaserUp";
+    LaserUp.src = "assets/sounds/LaserUp.mp3";
+    LaserUp.type = "audio/mpeg";
+    document.body.appendChild(LaserUp);
+
+    const BossDeath = document.createElement("audio");
+    BossDeath.id = "BossDeath";
+    BossDeath.src = "assets/sounds/BossDeath.mp3";
+    BossDeath.type = "audio/mpeg";
+    BossDeath.volume = 1.0;
+    document.body.appendChild(BossDeath);
+
+    const MainMusic = document.createElement("audio");
+    MainMusic.id = "MainMusic";
+    MainMusic.src = "assets/sounds/MainMusic.mp3";
+    MainMusic.type = "audio/mpeg";
+    MainMusic.loop = true;
+    MainMusic.volume = 0.2;
+    document.body.appendChild(MainMusic);
 }
