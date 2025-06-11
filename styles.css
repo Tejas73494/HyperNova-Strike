@@ -281,15 +281,13 @@ body {
     left: 23.2%;
 }
 
-/* Your stylesheet.css */
-
 #canvas {
     border: 5px solid black;
     position: absolute;
     right: 445px;
     top: 5px;
 
-    background-image: url('background.png'), url('background.png');
+    background-image: url('assets/images/GameBackground.png'), url('assets/images/GameBackground.png');
     background-repeat: repeat-y;
     background-size: auto;
 

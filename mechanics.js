@@ -215,8 +215,8 @@ class bigLaser extends Laser {
 class Player {
     constructor(game) {
         this.game = game;
-        this.width = 300;
-        this.height = 300;
+        this.width = 370;
+        this.height = 370;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = this.game.height - this.height;
         this.speed = 5;
@@ -233,7 +233,7 @@ class Player {
     }
     draw(context) {
         context.fillRect(this.x + 53, this.y + 40, this.width - 201, this.height + 460);
-        context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        context.drawImage(this.image, this.x, this.y + 100, this.width, this.height);
         if (this.game.keys.indexOf('f') > -1) {
             this.BigLaser.render(context);
         }
@@ -547,7 +547,6 @@ class Game {
         this.rows = 2;
         this.enemySize = 100;
         this.image = document.getElementById('HeartLives1')
-        //this.waves.push(new Wave(this));
         setTimeout(() => {
             this.waves.push(new Wave(this));
         }, 6000)
@@ -578,7 +577,6 @@ class Game {
             }
 
             if (e.key === 'f') {
-                // Check if the sound is NOT already playing
                 if (!this.laserSoundPlaying) {
                     if (typeof LaserBeam !== 'undefined' && LaserBeam && !this.player.cooldown) {
                         LaserBeam.play();
@@ -672,10 +670,10 @@ class Game {
         for (let i = 0; i < this.player.lives; i++) {
             context.drawImage(this.image, -15 + 50 * i, 65, 100, 100);
         }
-        // energy
+        // Laser Beam Energy
         context.save();
         context.font = '18px Impact'
-        context.fillText('Ion Cannon Energy', 20, 150);
+        context.fillText('Laser Beam Energy', 20, 150);
         context.restore();
 
         context.save()
