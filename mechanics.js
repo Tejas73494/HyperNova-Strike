@@ -535,7 +535,7 @@ class Wave {
                 let enemyX = x * this.game.enemySize;
                 let enemyY = y * (this.game.enemySize * 0.75);
 
-                const round1 = this.game.waveCount;
+                const round = this.game.waveCount;
 
                 let easyWeight = Math.max(0, 50 - Math.floor((round - 1) / 10) * 10); 
                 let hardWeight = 20 + Math.floor((round - 1) / 10) * 10;
@@ -623,9 +623,9 @@ class Game {
         this.rows = 2;
         this.enemySize = 91;
         this.image = document.getElementById('HeartLives1')
-        //setTimeout(() => {
+        setTimeout(() => {
         this.waves.push(new Wave(this));
-        //}, 6000)
+        }, 5500)
         this.waveCount = 1;
 
         this.spriteUpdate = false;
@@ -783,7 +783,7 @@ class Game {
         this.waveCount++;
         if (this.player.lives < this.player.maxLives) this.player.lives++;
 
-        if (this.waveCount % 2 === 0) {
+        if (this.waveCount % 5 === 0) {
             WaveCompleted.play()
             WaveCompleted.currentTime = 0;
             this.bossArray.push(new Boss(this, this.bossLives));
