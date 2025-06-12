@@ -227,18 +227,20 @@ class Player {
         this.energy = 50;
         this.maxEnergy = 100;
         this.cooldown = (this.energy < this.maxEnergy * 0.2);
-        this.imageScale = 2;
+        this.OffsetX = 510;
+        this.OffsetY = 530;
+        this.DrawoffsetX = 25;
+        this.DrawoffsetY = 20;
 
         this.isRechargingSoundPlaying = false;
         this.isRechargedSoundPlayed = (this.energy >= this.maxEnergy * 0.2);
     }
     draw(context) {
-       // context.fillRect(this.x, this.y, this.width, this.height);
-        const imageWidth = 150 * this.imageScale;
-        const imageHeight = 150 * this.imageScale;
+        const imageWidth = 300;
+        const imageHeight = 300; 
         const imageX = this.x - (imageWidth - this.width) / 2;
         const imageY = this.y - (imageHeight - this.height) / 2;
-        context.drawImage(this.image, 25, 20, 510, 530, imageX, imageY, imageWidth, imageHeight);
+        context.drawImage(this.image, this.DrawoffsetX, this.DrawoffsetY, this.OffsetX, this.OffsetY, imageX, imageY, imageWidth, imageHeight);
 
         if (this.game.keys.indexOf('f') > -1) {
             this.BigLaser.render(context);
@@ -327,8 +329,7 @@ class Enemy {
         if (this.isDying) {
             context.drawImage(this.deathImage, this.x, this.y, this.width, this.height);
         } else {
-            context.strokeRect(this.x, this.y, this.width, this.height);
-            context.drawImage(this.image, this.x - 20.5, this.y - 32, this.width2, this.height2);
+            context.drawImage(this.image, this.x - 21, this.y - 32, this.width2, this.height2);
         }
     }
     update(x, y) {
@@ -533,14 +534,39 @@ class Wave {
             for (let x = 0; x < this.game.columns; x++) {
                 let enemyX = x * this.game.enemySize;
                 let enemyY = y * (this.game.enemySize * 0.75);
-                const randomEnemy = Math.random();
-                if (randomEnemy < 0.5) {
+
+                const round1 = this.game.waveCount;
+
+                let easyWeight = Math.max(0, 50 - Math.floor((round - 1) / 10) * 10); 
+                let hardWeight = 20 + Math.floor((round - 1) / 10) * 10;
+
+                if (hardWeight > 100) hardWeight = 100;
+
+                let mediumWeight = 100 - (easyWeight + hardWeight);
+
+                if (easyWeight + mediumWeight + hardWeight !== 100) {
+                    const overflow = easyWeight + mediumWeight + hardWeight - 100;
+                    mediumWeight -= overflow;
+                    if (mediumWeight < 0) mediumWeight = 0;
+                }
+                const randomEnemy = Math.random() * 100;
+
+                if (randomEnemy < easyWeight) {
                     this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
-                } else if (randomEnemy < 0.8) {
+                } else if (randomEnemy < easyWeight + mediumWeight) {
                     this.enemies.push(new BetaStriker(this.game, enemyX, enemyY));
                 } else {
                     this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY));
                 }
+
+                // const randomEnemy = Math.random();
+                // if (randomEnemy < 0.5) {
+                //     this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
+                // } else if (randomEnemy < 0.8) {
+                //     this.enemies.push(new BetaStriker(this.game, enemyX, enemyY));
+                // } else {
+                //     this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY));
+                // }
                 
             }
         }
