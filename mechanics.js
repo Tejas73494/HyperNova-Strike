@@ -27,6 +27,7 @@ const BossAlien1 = document.getElementById("BossAlien");
 const BossProperties1 = document.getElementById("BossProperties");
 const GameImg = document.getElementById("GameImg");
 const GameUIProperties = document.getElementById("GameUIProperties");
+BackgroundMusic.volume = 0.4;
 
 
 
@@ -1033,6 +1034,4 @@ function CreateGameAudioAssets() {
     PlayerHit.type = "audio/mpeg";
     document.body.appendChild(PlayerHit);
     PlayerHit.volume = 0.6;
-
-
 }

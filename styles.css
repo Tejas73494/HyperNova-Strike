@@ -27,7 +27,7 @@ body {
     color: black;
     font-size: 24px;
     padding: 15px 30px;
-    border: none;
+    border: 2px solid darkgray;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
