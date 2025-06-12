@@ -34,7 +34,7 @@ const GameUIProperties = document.getElementById("GameUIProperties");
 
 // This function is to help initialize the background music  
 function InitialGameStart() {
-    //BackgroundMusic.play();
+    BackgroundMusic.play();
     InitialStart.style.display = "block";
     playButton.style.display = "none";
     gameOverlay.style.display = "none";
@@ -800,7 +800,7 @@ class Game {
         this.waveCount++;
         if (this.player.lives < this.player.maxLives) this.player.lives++;
 
-        if (this.waveCount % 2 === 0) {
+        if (this.waveCount % 5 === 0) {
             WaveCompleted.play()
             WaveCompleted.currentTime = 0;
             this.bossArray.push(new Boss(this, this.bossLives));

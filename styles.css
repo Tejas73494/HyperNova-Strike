@@ -1,7 +1,6 @@
 body {
     background-color: white;
     margin: 0;
-    overflow-x: auto;
     position: relative;
 }
 
@@ -196,57 +195,58 @@ body {
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
+    overflow: auto;
 }
 
 #SuperWeaponInstructions {
-    top: 47%;
-    left: 26.3%;
+    top: 50%;
+    left: 25.5%;
     max-width: 745px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #ZetaScoutProperties {
-    top: 18%;
-    left: 37%;
-    font-size: 17px;
-    max-width: 570px;
+    top: 26%;
+    left: 25%;
+    font-size: 18px;
+    max-width: 770px;
 }
 
 #BetaStrikerProperties {
-    top: 38%;
-    left: 37%;
+    top: 48%;
+    left: 25%;
     font-size: 17px;
-    max-width: 575px;
+    max-width: 750px;
 }
 
 #OmegaTitanProperties {
-    top: 56%;
-    left: 37%;
+    top: 72%;
+    left: 25%;
     font-size: 17px;
-    max-width: 570px;
+    max-width: 752px;
 }
 
 #HealthLivesProperties {
-    top: 21%;
-    left: 35%;
+    top: 32%;
+    left: 27%;
     font-size: 17px;
-    max-width: 585px;
+    max-width: 700px;
 }
 
 #BossProperties {
-    top: 46.5%;
-    left: 42%;
+    top: 65%;
+    left: 27%;
     font-size: 17px;
     letter-spacing: 1.5px;
-    max-width: 455px;
+    max-width: 700px;
 }
 
 #GameUIProperties {
-    top: 40%;
-    left: 50%;
+    top: 70%;
+    left: 26.5%;
     font-size: 17px;
     letter-spacing: 1.5px;
-    max-width: 370px;
+    max-width: 760px;
 }
 
 #ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives {
@@ -262,23 +262,23 @@ body {
 }
 
 #ZetaScout {
-    top: 13%;
-    left: 22.5%;
+    top: 5%;
+    left: 40%;
 }
 
 #BetaStriker {
-    top: 33%;
-    left: 22.5%;
+    top: 26%;
+    left: 40%;
 }
 
 #OmegaTitan {
-    top: 56%;
-    left: 22.5%;
+    top: 50%;
+    left: 40%;
 }
 
 #HealthLives {
     top: 13%;
-    left: 22%;
+    left: 42%; 
 }
 
 #BossAlien {
@@ -287,16 +287,16 @@ body {
     height: 300px;
     width: auto;
     top: 38%;
-    left: 23%;
+    left: 40%;
 }
 
 #GameImg {
     position: absolute;
     display: none;
-    height: 450px;
+    height: 405px;
     width: auto;
-    top: 23%;
-    left: 25%;
+    top: 16%;
+    left: 39%;
     border: 3px solid white;
 
 }
