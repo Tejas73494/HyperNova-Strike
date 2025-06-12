@@ -435,7 +435,7 @@ class Boss {
 
         this.isDying = false;
         this.deathAnimationTimer = 0; 
-        this.deathAnimationDuration = 1800;
+        this.deathAnimationDuration = 2550;
         this.imageScale = 2;
 
         this.BossImage = document.getElementById('BossDeathImg1');
@@ -501,7 +501,7 @@ class Boss {
             BossBattleMusic.pause();
             BossBattleMusic.currentTime = 0;
             this.game.score += this.maxLives;
-            this.game.bossLives += 5;
+            this.game.bossLives += 10;
             if (!this.game.gameOver) this.game.newWave();
             MainMusic.play();
         }
@@ -553,40 +553,69 @@ class Wave {
             for (let x = 0; x < this.game.columns; x++) {
                 let enemyX = x * this.game.enemySize;
                 let enemyY = y * (this.game.enemySize * 0.75);
-
-                const round = this.game.waveCount;
-
-                let easyWeight = Math.max(0, 50 - Math.floor((round - 1) / 10) * 10); 
-                let hardWeight = 20 + Math.floor((round - 1) / 10) * 10;
-
-                if (hardWeight > 100) hardWeight = 100;
-
-                let mediumWeight = 100 - (easyWeight + hardWeight);
-
-                if (easyWeight + mediumWeight + hardWeight !== 100) {
-                    const overflow = easyWeight + mediumWeight + hardWeight - 100;
-                    mediumWeight -= overflow;
-                    if (mediumWeight < 0) mediumWeight = 0;
-                }
-                const randomEnemy = Math.random() * 100;
-
-                if (randomEnemy < easyWeight) {
-                    this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
-                } else if (randomEnemy < easyWeight + mediumWeight) {
-                    this.enemies.push(new BetaStriker(this.game, enemyX, enemyY));
-                } else {
-                    this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY));
-                }
-
-                // const randomEnemy = Math.random();
-                // if (randomEnemy < 0.5) {
-                //     this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
-                // } else if (randomEnemy < 0.8) {
-                //     this.enemies.push(new BetaStriker(this.game, enemyX, enemyY));
-                // } else {
-                //     this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY));
-                // }
                 
+                const round = this.game.waveCount;
+                let easyWeight, mediumWeight, hardWeight;
+                if (round <= 10) {
+                    easyWeight = 60;
+                    mediumWeight = 30;
+                    hardWeight = 10;
+                } else if (round <= 20) {
+                    easyWeight = 50;
+                    mediumWeight = 35;
+                    hardWeight = 15;
+                } else if (round <= 30) {
+                    easyWeight = 40;
+                    mediumWeight = 40;
+                    hardWeight = 20;
+                } else if (round <= 40) {
+                    easyWeight = 30;
+                    mediumWeight = 45;
+                    hardWeight = 25;
+                } else if (round <= 50) {
+                    easyWeight = 20;
+                    mediumWeight = 50;
+                    hardWeight = 30;
+                } else if (round <= 60) {
+                    easyWeight = 10;
+                    mediumWeight = 55;
+                    hardWeight = 35;
+                } else if (round <= 70) {
+                    easyWeight = 5;
+                    mediumWeight = 55;
+                    hardWeight = 40;
+                } else if (round <= 80) {
+                    easyWeight = 0;
+                    mediumWeight = 60;
+                    hardWeight = 40;
+                } else if (round <= 90) {
+                    easyWeight = 0;
+                    mediumWeight = 40;
+                    hardWeight = 60;
+                } else if (round <= 100) {
+                    easyWeight = 0;
+                    mediumWeight = 20;
+                    hardWeight = 80;
+                } else {
+                    easyWeight = 0;
+                    mediumWeight = 0;
+                    hardWeight = 100;
+                }
+                const totalWeight = easyWeight + mediumWeight + hardWeight;
+                if (totalWeight !== 100) {
+                    const overflow = totalWeight - 100;
+                    mediumWeight = Math.max(0, mediumWeight - overflow);
+                }
+                
+                const randomEnemy = Math.random() * 100;
+                
+                if (randomEnemy < easyWeight) {
+                    this.enemies.push(new ZetaScout(this.game, enemyX, enemyY)); // 1 HP
+                } else if (randomEnemy < easyWeight + mediumWeight) {
+                    this.enemies.push(new BetaStriker(this.game, enemyX, enemyY)); // 2 HP
+                } else {
+                    this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY)); // 3 HP
+                }
             }
         }
     }
@@ -987,7 +1016,7 @@ function CreateGameAudioAssets() {
     BossDeath.id = "BossDeath";
     BossDeath.src = "assets/sounds/BossDeath.mp3";
     BossDeath.type = "audio/mpeg";
-    BossDeath.volume = 0.3;
+    BossDeath.volume = 0.4;
     document.body.appendChild(BossDeath);
 
     const MainMusic = document.createElement("audio");
