@@ -165,10 +165,10 @@ class Laser {
         this.game = game;
         this.x = 0;
         this.y = 0;
-        this.height = this.game.height - 50;
+        this.height = this.game.height - 74.3;
     }
     render(context) {
-        this.x = this.game.player.x + this.game.player.width * 0.5;
+        this.x = this.game.player.x + this.game.player.width * 0.5 - 23.2;
         this.game.player.energy -= this.damage;
         
 
@@ -201,7 +201,7 @@ class Laser {
 class bigLaser extends Laser {
     constructor(game) {
         super(game)
-        this.width = 40;
+        this.width = 47.5;
         this.damage = 0.7;
     }
     render(context) {
@@ -215,10 +215,10 @@ class bigLaser extends Laser {
 class Player {
     constructor(game) {
         this.game = game;
-        this.width = 320;
-        this.height = 320;
+        this.width = 113;
+        this.height = 140;
         this.x = this.game.width * 0.5 - this.width * 0.5;
-        this.y = this.game.height - this.height;
+        this.y = this.game.height - this.height - 5;
         this.speed = 5;
         this.lives = 3;
         this.maxLives = 5;
@@ -227,13 +227,19 @@ class Player {
         this.energy = 50;
         this.maxEnergy = 100;
         this.cooldown = (this.energy < this.maxEnergy * 0.2);
+        this.imageScale = 2;
 
-        this.isRechargingSoundPlaying = false; // Flag for the sound that plays when energy is low
+        this.isRechargingSoundPlaying = false;
         this.isRechargedSoundPlayed = (this.energy >= this.maxEnergy * 0.2);
     }
     draw(context) {
-        context.fillRect(this.x + 53, this.y + 40, this.width - 201, this.height + 460);
-        context.drawImage(this.image, this.x, this.y + 100, this.width, this.height);
+       // context.fillRect(this.x, this.y, this.width, this.height);
+        const imageWidth = 150 * this.imageScale;
+        const imageHeight = 150 * this.imageScale;
+        const imageX = this.x - (imageWidth - this.width) / 2;
+        const imageY = this.y - (imageHeight - this.height) / 2;
+        context.drawImage(this.image, 25, 20, 510, 530, imageX, imageY, imageWidth, imageHeight);
+
         if (this.game.keys.indexOf('f') > -1) {
             this.BigLaser.render(context);
         }
@@ -242,7 +248,7 @@ class Player {
         const wasInCooldown = this.cooldown;
 
         //energy
-        if (this.energy < this.maxEnergy) this.energy += 0.05;
+        if (this.energy < this.maxEnergy) this.energy += 0.05; 
         if (this.energy < 1) {
             this.cooldown = true;
         }
@@ -289,7 +295,7 @@ class Player {
     }
     shoot() {
         const projectile = this.game.getProjectile();
-        if (projectile) projectile.start(this.x + this.width/2, this.y);
+        if (projectile) projectile.start((this.x + this.width * 0.5) - 1.8, this.y);
     }
     restart() {
         this.x = this.game.width * 0.5 - this.width * 0.5;
@@ -302,7 +308,9 @@ class Enemy {
     constructor(game, positionX, positionY) {
         this.game = game;
         this.width = this.game.enemySize;
-        this.height = this.game.enemySize;
+        this.height = this.game.enemySize - 23;
+        this.width2 = 130;
+        this.height2 = 130;
         this.positionX = positionX;
         this.positionY = positionY;
         this.x = 0;
@@ -320,7 +328,7 @@ class Enemy {
             context.drawImage(this.deathImage, this.x, this.y, this.width, this.height);
         } else {
             context.strokeRect(this.x, this.y, this.width, this.height);
-            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.x - 20.5, this.y - 32, this.width2, this.height2);
         }
     }
     update(x, y) {
@@ -396,8 +404,8 @@ class OmegaTitan extends Enemy {
 class Boss {
     constructor(game, bossLives) {
         this.game = game;
-        this.width = 300;
-        this.height = 300;
+        this.width = 280;
+        this.height = 113;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = -this.height;
         this.speedX = Math.random() < 0.5 ? -1 : 1;
@@ -410,6 +418,7 @@ class Boss {
         this.isDying = false;
         this.deathAnimationTimer = 0; 
         this.deathAnimationDuration = 550;
+        this.imageScale = 2;
 
         this.BossImage = document.getElementById('BossDeathImg1');
 
@@ -419,8 +428,11 @@ class Boss {
         if (this.isDying) {
             context.drawImage(this.BossImage, this.x, this.y, this.width, this.height);
         } else {
-            context.strokeRect(this.x + 45, this.y + 90, this.width - 75, this.height - 200);
-            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            const imageWidth = 185 * this.imageScale;
+            const imageHeight = 185 * this.imageScale;
+            const imageX = this.x - (imageWidth - this.width) / 2 - 4.5;
+            const imageY = this.y - (imageHeight - this.height) / 2;
+            context.drawImage(this.image, imageX, imageY, imageWidth, imageHeight);
         }
         if (this.lives >= 1) {
             context.save();
@@ -520,12 +532,14 @@ class Wave {
         for (let y = 0; y < this.game.rows; y++) {
             for (let x = 0; x < this.game.columns; x++) {
                 let enemyX = x * this.game.enemySize;
-                let enemyY = y * this.game.enemySize;
-                if (Math.random() < 0.5) {
+                let enemyY = y * (this.game.enemySize * 0.75);
+                const randomEnemy = Math.random();
+                if (randomEnemy < 0.5) {
                     this.enemies.push(new ZetaScout(this.game, enemyX, enemyY));
-
-                } else {
+                } else if (randomEnemy < 0.8) {
                     this.enemies.push(new BetaStriker(this.game, enemyX, enemyY));
+                } else {
+                    this.enemies.push(new OmegaTitan(this.game, enemyX, enemyY));
                 }
                 
             }
@@ -581,11 +595,11 @@ class Game {
         this.waves = [];
         this.columns = 2;
         this.rows = 2;
-        this.enemySize = 100;
+        this.enemySize = 91;
         this.image = document.getElementById('HeartLives1')
-        setTimeout(() => {
-            this.waves.push(new Wave(this));
-        }, 6000)
+        //setTimeout(() => {
+        this.waves.push(new Wave(this));
+        //}, 6000)
         this.waveCount = 1;
 
         this.spriteUpdate = false;
@@ -743,7 +757,7 @@ class Game {
         this.waveCount++;
         if (this.player.lives < this.player.maxLives) this.player.lives++;
 
-        if (this.waveCount % 5 === 0) {
+        if (this.waveCount % 2 === 0) {
             WaveCompleted.play()
             WaveCompleted.currentTime = 0;
             this.bossArray.push(new Boss(this, this.bossLives));
