@@ -239,7 +239,7 @@ body {
     max-width: 545px;
 }
 
-#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives, #BossAlienShooting, #BossAlienBeam {
+#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives, #BossAlienShooting {
     position: absolute;
     display: none;
     height: 250px;
@@ -274,11 +274,6 @@ body {
 #BossAlienShooting {
     top: 30%;
     left: 23%;
-}
-
-#BossAlienBeam {
-    top: 53%;
-    left: 23.2%;
 }
 
 #canvas {
