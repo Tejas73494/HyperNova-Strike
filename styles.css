@@ -249,7 +249,7 @@ body {
     max-width: 760px;
 }
 
-#ShipControl, #ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives {
+#ZetaScout, #BetaStriker, #OmegaTitan, #HealthLives {
     position: absolute;
     display: none;
     height: 250px;
@@ -257,7 +257,11 @@ body {
 }
 
 #ShipControl {
-    top: 15%;
+    position: absolute;
+    display: none;
+    height: 310px;
+    width: auto;
+    top: 13%;
     left: 35%;
 }
 
