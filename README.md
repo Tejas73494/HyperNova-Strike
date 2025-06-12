@@ -162,7 +162,7 @@ The game becomes progressively harder by adjusting enemy spawn probabilities and
 
 ### Game Start Page
 
-<img width="766" alt="Game Start Page" src="https://github.com/user-attachments/assets/c4e8e4dd-d7af-44f6-b163-a750dd7aec96" />
+<img width="766" alt="Game Start Page" src="https://github.com/user-attachments/assets/794f7d0c-f79f-45a9-bfda-d2fd6100550f" />
 
 
 ### Game UI
