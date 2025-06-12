@@ -23,10 +23,11 @@ const OmegaTitan1 = document.getElementById("OmegaTitan");
 const OmegaTitanProperties1 = document.getElementById("OmegaTitanProperties");
 const HealthLives1 = document.getElementById("HealthLives");
 const HealthLivesProperties1 = document.getElementById("HealthLivesProperties");
-const BossAlienShooting1 = document.getElementById("BossAlienShooting");
-const BossAlienBeam1 = document.getElementById("BossAlienBeam");
+const BossAlien1 = document.getElementById("BossAlien");
 const BossProperties1 = document.getElementById("BossProperties");
 const GameImg = document.getElementById("GameImg");
+const GameUIProperties = document.getElementById("GameUIProperties");
+
 
 
 
@@ -42,6 +43,7 @@ function InitialGameStart() {
 // These next 7 functions control the how-to-play page
 function playInstructions() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     Instructions.style.display = "none";
     ControlsSuperWeapon1.style.display = "block";
     HealthEnemyProperties.style.display = "block";
@@ -52,6 +54,7 @@ function playInstructions() {
 
 function ControlsSuperWeapon() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     ControlsSuperWeapon1.style.display = "none";
     HealthEnemyProperties.style.display = "none";
     HealthBossProperties1.style.display = "none";
@@ -64,6 +67,7 @@ function ControlsSuperWeapon() {
 
 function EnemyProperties() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     ControlsSuperWeapon1.style.display = "none";
     HealthEnemyProperties.style.display = "none";
     HealthBossProperties1.style.display = "none";
@@ -80,6 +84,7 @@ function EnemyProperties() {
 
 function HealthBossProperties() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     ControlsSuperWeapon1.style.display = "none";
     HealthEnemyProperties.style.display = "none";
     HealthBossProperties1.style.display = "none";
@@ -88,13 +93,13 @@ function HealthBossProperties() {
     goBackToHowtoplay1.style.display = "block";
     HealthLives1.style.display = "block";
     HealthLivesProperties1.style.display = "block";
-    BossAlienShooting1.style.display = "block";
-    BossAlienBeam1.style.display = "block";
+    BossAlien1.style.display = "block";
     BossProperties1.style.display = "block";
 }
 
 function GameUI() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     ControlsSuperWeapon1.style.display = "none";
     HealthEnemyProperties.style.display = "none";
     HealthBossProperties1.style.display = "none";
@@ -102,11 +107,13 @@ function GameUI() {
     Back.style.display = "none";
     goBackToHowtoplay1.style.display = "block";
     GameImg.style.display = "block";
+    GameUIProperties.style.display = "block";
 
 }
 
 function goBackToInstructions() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     Instructions.style.display = "block";
     ControlsSuperWeapon1.style.display = "none";
     HealthEnemyProperties.style.display = "none";
@@ -117,6 +124,7 @@ function goBackToInstructions() {
 
 function goBackToHowtoplay() {
     ClickMenu.play();
+    ClickMenu.currentTime = 0;
     ControlsSuperWeapon1.style.display = "block";
     HealthEnemyProperties.style.display = "block";
     HealthBossProperties1.style.display = "block";
@@ -133,9 +141,10 @@ function goBackToHowtoplay() {
     OmegaTitanProperties1.style.display = "none";
     HealthLives1.style.display = "none";
     HealthLivesProperties1.style.display = "none";
-    BossAlienShooting1.style.display = "none";
-    BossAlienBeam1.style.display = "none";
+    BossAlien1.style.display = "none";
     BossProperties1.style.display = "none";
+    GameImg.style.display = "none"
+    GameUIProperties.style.display = "none";
 }
 
 function startGame() {
@@ -225,7 +234,7 @@ class Player {
         this.height = 140;
         this.x = this.game.width * 0.5 - this.width * 0.5;
         this.y = this.game.height - this.height - 5;
-        this.speed = 5;
+        this.speed = 12;
         this.lives = 3;
         this.maxLives = 5;
         this.image = document.getElementById('player');
@@ -449,7 +458,7 @@ class Boss {
             context.shadowOffsetX = 3;
             context.shadowOffsetY = 3;
             context.shadowColor = 'black';
-            context.fillText(Math.floor(this.lives), this.x + this.width * 0.5, this.y + 50);
+            context.fillText(Math.floor(this.lives), this.x + this.width * 0.5 - 1.5, this.y + 28);
             context.restore();
         }
     }
@@ -589,7 +598,7 @@ class Projectile {
         this.height = 20;
         this.x = 0;
         this.y = 0;
-        this.speed = 20;
+        this.speed = 23;
         this.free = true;
     }
     draw(context) {
@@ -709,8 +718,6 @@ class Game {
             projectile.update();
             projectile.draw(context);
         });
-        this.player.draw(context);
-        this.player.update();
         this.bossArray.forEach(boss => {
             boss.draw(context);
             boss.update();
