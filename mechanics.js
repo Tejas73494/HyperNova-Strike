@@ -501,7 +501,7 @@ class Boss {
             BossBattleMusic.pause();
             BossBattleMusic.currentTime = 0;
             this.game.score += this.maxLives;
-            this.game.bossLives += 10;
+            this.game.bossLives += 5;
             if (!this.game.gameOver) this.game.newWave();
             MainMusic.play();
         }
