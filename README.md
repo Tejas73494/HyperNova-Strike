@@ -1,7 +1,6 @@
 # Hypernova Strike
 
-![Game Screenshot](assets/images/GameBackground.png)
-
+Play the game [here]()!
 ---
 
 ## Overview
@@ -16,10 +15,10 @@ The game runs on an HTML5 `<canvas>` element using JavaScript for all game mecha
   
 - [Technologies Used](#technologies-used)  
 - [How the Game Works](#how-the-game-works)    
-- [How to Play Page Details](#how-to-play-page-details)
-- [Game Scaling and Enemy Spawn Table](#game-scaling-and-enemy-spawn-table) 
+- [How to Play Page Details](#how-to-play-page-details) 
 - [Boss Mechanics](#boss-mechanics)  
-- [Controls](#controls)   
+- [Controls](#controls)
+- [Game Scaling and Enemy Spawn Table](#game-scaling-and-enemy-spawn-table)
 ---
 
 ## Technologies Used
