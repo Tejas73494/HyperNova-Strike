@@ -1,6 +1,6 @@
 # Hypernova Strike
 
-## Play the game [here]()!
+## Play the game [here](https://hypernova-strike.vercel.app)!
 
 ## Overview
 
@@ -20,6 +20,7 @@ The game runs on an HTML5 `<canvas>` using JavaScript for all game mechanics and
 - [Health](#health)
 - [Game UI](#game-ui)
 - [Enemy/Boss Game Scaling](#enemyboss-game-scaling)
+- [Game Images](#game-images)
 
 ---
 
@@ -156,3 +157,14 @@ The game becomes progressively harder by adjusting enemy spawn probabilities and
   - Bosses become tougher by gaining more health
 
 ---
+
+## Game Images 
+
+### Game Start Page
+
+<img width="766" alt="Game Start Page" src="https://github.com/user-attachments/assets/c4e8e4dd-d7af-44f6-b163-a750dd7aec96" />
+
+
+### Game UI
+
+<img width="610" alt="Game UI" src="https://github.com/user-attachments/assets/4bef11a6-35d4-44a7-b34f-ff32bd720ccb" />
