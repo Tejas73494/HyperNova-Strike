@@ -345,6 +345,8 @@ class Enemy {
 
         // check collision enemies - player
         if (this.game.checkCollision(this, this.game.player)) {
+            PlayerHit.play();
+            PlayerHit.currentTime = 0;
             this.markedforDeletion = true;
             if (!this.game.gameOver && this.game.score > 0) this.game.score--;
             this.game.player.lives--;
@@ -418,7 +420,7 @@ class Boss {
 
         this.isDying = false;
         this.deathAnimationTimer = 0; 
-        this.deathAnimationDuration = 550;
+        this.deathAnimationDuration = 1800;
         this.imageScale = 2;
 
         this.BossImage = document.getElementById('BossDeathImg1');
@@ -467,6 +469,8 @@ class Boss {
 
         // collision detection boss/player
         if (this.game.checkCollision(this, this.game.player) && this.lives >= 1) {
+            PlayerHit.play();
+            PlayerHit.currentTime = 0;
             this.game.gameOver = true;
             this.lives = 0;
         }
@@ -783,7 +787,7 @@ class Game {
         this.waveCount++;
         if (this.player.lives < this.player.maxLives) this.player.lives++;
 
-        if (this.waveCount % 5 === 0) {
+        if (this.waveCount % 2 === 0) {
             WaveCompleted.play()
             WaveCompleted.currentTime = 0;
             this.bossArray.push(new Boss(this, this.bossLives));
@@ -908,7 +912,7 @@ function CreateGameAudioAssets() {
     BossBattleMusic.src = "assets/sounds/BossBattleMusic.mp3";
     BossBattleMusic.type = "audio/mpeg";
     BossBattleMusic.loop = true;
-    BossBattleMusic.volume = 1.0;
+    BossBattleMusic.volume = 0.6;
     document.body.appendChild(BossBattleMusic);
 
     const EnemyDeath = document.createElement("audio");
@@ -922,14 +926,14 @@ function CreateGameAudioAssets() {
     BossHit.id = "BossHit";
     BossHit.src = "assets/sounds/BossHit.mp3";
     BossHit.type = "audio/mpeg";
-    BossHit.volume = 0.4;
+    BossHit.volume = 0.7;
     document.body.appendChild(BossHit);
 
     const GameOver = document.createElement("audio");
     GameOver.id = "GameOver";
     GameOver.src = "assets/sounds/GameOver.mp3";
     GameOver.type = "audio/mpeg";
-    GameOver.volume = 0.2;
+    GameOver.volume = 0.7;
     document.body.appendChild(GameOver);
 
     const LaserBeam = document.createElement("audio");
@@ -956,20 +960,21 @@ function CreateGameAudioAssets() {
     LaserDown.id = "LaserDown";
     LaserDown.src = "assets/sounds/LaserDown.mp3";
     LaserDown.type = "audio/mpeg";
-    LaserDown.volume = 1.0;
+    LaserDown.volume = 0.9;
     document.body.appendChild(LaserDown);
 
     const LaserUp = document.createElement("audio");
     LaserUp.id = "LaserUp";
     LaserUp.src = "assets/sounds/LaserUp.mp3";
     LaserUp.type = "audio/mpeg";
+    LaserUp.volume = 0.7;
     document.body.appendChild(LaserUp);
 
     const BossDeath = document.createElement("audio");
     BossDeath.id = "BossDeath";
     BossDeath.src = "assets/sounds/BossDeath.mp3";
     BossDeath.type = "audio/mpeg";
-    BossDeath.volume = 0.6;
+    BossDeath.volume = 0.3;
     document.body.appendChild(BossDeath);
 
     const MainMusic = document.createElement("audio");
@@ -979,4 +984,13 @@ function CreateGameAudioAssets() {
     MainMusic.loop = true;
     MainMusic.volume = 0.4;
     document.body.appendChild(MainMusic);
+
+    const PlayerHit = document.createElement("audio");
+    PlayerHit.id = "PlayerHit";
+    PlayerHit.src = "assets/sounds/PlayerHit.mp3";
+    PlayerHit.type = "audio/mpeg";
+    document.body.appendChild(PlayerHit);
+    PlayerHit.volume = 0.6;
+
+
 }
