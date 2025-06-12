@@ -26,6 +26,10 @@ const HealthLivesProperties1 = document.getElementById("HealthLivesProperties");
 const BossAlienShooting1 = document.getElementById("BossAlienShooting");
 const BossAlienBeam1 = document.getElementById("BossAlienBeam");
 const BossProperties1 = document.getElementById("BossProperties");
+const GameImg = document.getElementById("GameImg");
+
+
+
 
 // This function is to help initialize the background music  
 function InitialGameStart() {
@@ -97,6 +101,8 @@ function GameUI() {
     GameUI1.style.display = "none";
     Back.style.display = "none";
     goBackToHowtoplay1.style.display = "block";
+    GameImg.style.display = "block";
+
 }
 
 function goBackToInstructions() {
