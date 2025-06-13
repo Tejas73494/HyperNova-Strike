@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Tejas Naik">
         <meta name="description" content="HyperNova-Strike — a fun, fast-paced, space shooter game built 
-            with HTML, CSS, and JavaScript. Battle waves of enemy ships 
-            and powerful bosses with custom pixel art, sound effects, and smooth gameplay">
+            with HTML, CSS, and JavaScript. Battle waves of aliens and powerful bosses with custom 
+            pixel art, sound effects, and smooth gameplay">
         <title>HYPERNOVA STRIKE</title>
         <link rel="icon" href="assets/images/SpaceShip.png" type="image/x-icon">
         <link rel="stylesheet" href="styles.css">
@@ -37,7 +37,7 @@
                 <button id="HOW-TO-PLAY" onclick="playInstructions()">HOW-TO-PLAY</button>
             </div>
             <button id="ControlsSuperWeapon" onclick="ControlsSuperWeapon()">Controls/SuperWeapon</button>
-            <button id="HealthEnemyProperties" onclick="EnemyProperties()">Enemy Properties</button>
+            <button id="HealthEnemyProperties" onclick="EnemyProperties()">Alien Properties</button>
             <button id="HealthBossProperties" onclick="HealthBossProperties()">Health/Boss Properties</button>
             <button id="GameUI" onclick="GameUI()">GameUI</button>
             <button id="Back" onclick="goBackToInstructions()">Back</button>
@@ -51,16 +51,16 @@
                 to blue once the Laser Beam is ready for use again</p>
             <img src="assets/images/ShipControl.png" id="ShipControl" alt="ShipControl">
             <img src="assets/images/ZetaScout.png" id="ZetaScout" alt="ZetaScout">
-            <p id="ZetaScoutProperties">The green alien is the most common enemy. This enemy only takes one shot to destroy. This enemy will appear 
+            <p id="ZetaScoutProperties">The green alien is the most common alien. This alien only takes one shot to destroy. This alien will appear 
             a lot in the early rounds but will start to decrease in the later rounds</p>
             <img src="assets/images/BetaStriker.png" id="BetaStriker" alt="BetaStriker">
-            <p id="BetaStrikerProperties">The next enemy is the yellow alien, which is less common than the green Alien. Here, it takes two shots
-                to eliminate. This enemy will show up not as much in the beginning rounds, but will show up more in the  middle rounds. It will then 
+            <p id="BetaStrikerProperties">The next alien is the yellow alien, which is less common than the green Alien. Here, it takes two shots
+                to eliminate. This alien will show up not as much in the beginning rounds, but will show up more in the  middle rounds. It will then 
                 start to decrease in the later rounds</p>
             <img src="assets/images/OmegaTitan.png" id="OmegaTitan" alt="OmegaTitan">
-            <p id="OmegaTitanProperties">The Last enemy is the red alien. Which is the rarest out of all three. It takes three shots to eliminate. 
-            This enemy will rarely show up in the beginning rounds, but as the game progresses, it will show up more, and then on round 101+, it will be 
-            The only enemy showing up</p>
+            <p id="OmegaTitanProperties">The Last alien is the red alien. Which is the rarest out of all three. It takes three shots to eliminate. 
+            This alien will rarely show up in the beginning rounds, but as the game progresses, it will show up more, and then on round 101+, it will be 
+            The only alien showing up</p>
 
             <img src="assets/images/HeartLives.png" id="HealthLives" alt="HeartLives">
             <p id="HealthLivesProperties">You will begin the game with three hearts. Any time you get hit, you will lose one heart. You 
@@ -70,11 +70,10 @@
             <p id="BossProperties">Every 5 rounds, a powerful boss will appear to challenge your skills. It has more health than regular aliens, and a 
                 visible number above will appear at the top of the Boss to show health during the fight. In the later waves, the boss's health will 
                 increase</p>
-
-
+            
             <img src="assets/images/GameUI.png" id="GameImg" alt="GameUI">
             <p id="GameUIProperties">Here is what the GameUI looks like. Your score, current wave, health, and Laser Beam energy bar are shown in the top 
-                left. Your ship will be at the bottom middle. Enemies will appear from above</p>
+                left. Your ship will be at the bottom middle. aliens will appear from above</p>
             </div>
         </div>
         <script src="mechanics.js"></script>
